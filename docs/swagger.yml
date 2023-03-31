@@ -1,0 +1,75 @@
+openapi: '3.0.2'
+info:
+  title: API Title
+  version: '1.0'
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: utilisateur
+    description: Gestion de l'utilisateur 
+
+paths:
+  /utilisateur/{id}:
+    get:
+      tags:
+        - utilisateur
+      summary: Récupération d'un client via son id
+      description: Récupération d'un client via son id
+      operationId: getUtilisateurById
+      parameters:
+        - name: id
+          in: path
+          description: Identifiant de l'utilisateur
+          required: true
+          schema:
+            type: number
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUtilsateurResponse'
+
+components:
+  schemas:
+    GPSLocationResponse:
+      type: object
+      properties:
+        nom:
+          type: string
+          format: string
+          example: 'Valenciennes'
+        latitude:
+          type: number
+          format: double
+          example: 50.349998
+        longitude:
+          type: number
+          format: double
+          example: 3.53333
+    GetUtilsateurResponse:
+      type: object
+      properties:
+        id: 
+          type: number
+          format: long
+          example: 1
+        nomUtilisateur:
+          type: string
+          format: string
+          example: 'John Doe'
+        numeroTelephone: 
+          type: string
+          format: string
+          example: '+33600000000'
+        adresseMail: 
+          type: string
+          format: string
+          example: 'john.doe@example.com'
+        adresse:
+          $ref: '#/components/schemas/GPSLocationResponse'
+
+        
+    
