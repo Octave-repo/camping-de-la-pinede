@@ -31,6 +31,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUtilsateurResponse'
+  /utilisateur:
+    post:
+      tags:
+        - utilisateur
+      summary: Création d'un nouveau client
+      description: Création d'un nouveau client
+      operationId: createUtilisateur
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/PostUtilisateurRequest'
+      responses:
+        201:
+          description: Le client a été crée
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/GetUtilsateurResponse'
+    put:
+      tags: 
+        - utilisateur
+      summary: Mise à jour d'un utilisateur
+      description: Mise à jour d'un utilisateur
+      operationId: updateUtilisateur
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/PostUtilisateurRequest'
+      responses:
+        200:
+          description: Le client a été mis à jour
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/GetUtilsateurResponse'
+
+
+
+
 
 components:
   schemas:
@@ -70,6 +111,22 @@ components:
           example: 'john.doe@example.com'
         adresse:
           $ref: '#/components/schemas/GPSLocationResponse'
-
+    PostUtilisateurRequest:
+      type: object
+      properties:
+        nomUtilisateur:
+          type: string
+          format: string
+          example: 'John Doe'
+        numeroTelephone: 
+          type: string
+          format: string
+          example: '+33600000000'
+        adresseMail: 
+          type: string
+          format: string
+          example: 'john.doe@example.com'
+        adresse:
+          $ref: '#/components/schemas/GPSLocationResponse'
         
     
