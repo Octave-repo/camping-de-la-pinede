@@ -5,14 +5,16 @@ info:
 servers:
   - url: http://localhost:8080
 tags:
-  - name: utilisateur
+  - name: utilisateurs
     description: Gestion de l'utilisateur 
+  - name: campings
+    description: Gestion du camping
 
 paths:
-  /utilisateur/{id}:
+  /utilisateurs/{id}:
     get:
       tags:
-        - utilisateur
+        - utilisateurs
       summary: Récupération d'un client via son id
       description: Récupération d'un client via son id
       operationId: getUtilisateurById
@@ -31,10 +33,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUtilsateurResponse'
-  /utilisateur:
+  /utilisateurs:
     post:
       tags:
-        - utilisateur
+        - utilisateurs
       summary: Création d'un nouveau client
       description: Création d'un nouveau client
       operationId: createUtilisateur
@@ -52,7 +54,7 @@ paths:
                   $ref: '#/components/schemas/GetUtilsateurResponse'
     put:
       tags: 
-        - utilisateur
+        - utilisateurs
       summary: Mise à jour d'un utilisateur
       description: Mise à jour d'un utilisateur
       operationId: updateUtilisateur
@@ -68,6 +70,93 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/GetUtilsateurResponse'
+  /campings/{id}:
+    get:
+      tags:
+        - campings
+      summary: Obtenir un camping par son identifiant
+      description: Obtenir un camping par son identifiant
+      operationId: getCampingById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identifiant du camping
+          schema: 
+            type: integer
+            format: long
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCampingResponse'
+        404:
+          description: NOT FOUND
+
+          
+  /campings:
+    get:
+      tags:
+        - campings
+      summary: Obtenir une liste de campings
+      description: Retourne une liste de campings selon des filtres
+      operationId: getCampings
+      parameters:
+        - name: note
+          in: query
+          description: Note minimale du camping
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: prix
+          in: query
+          description: Prix maximum du camping
+          required: false
+          schema: 
+            type: number
+            format: double
+        - name: longi
+          in: query
+          description: Longitude de la position
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: lati
+          in: query
+          description: Latitude de la position
+          required: false
+          schema: 
+            type: number
+            format: double
+        - name: distance
+          in: query
+          description: Distance max du camping (en fonction de lonti et lati)
+          required: false
+          schema  :
+            type: number
+            format: double
+        - name: isFull
+          in: query
+          description: Determine si oui ou non on renvoie les campings pleins
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCampingsResponse'
+
+          
+
+        
 
 
 
@@ -128,5 +217,41 @@ components:
           example: 'john.doe@example.com'
         adresse:
           $ref: '#/components/schemas/GPSLocationResponse'
-        
-    
+    GetCampingResponse:
+      type: object
+      properties:
+        id: 
+          type: number
+          format: long
+          example: 1
+        nom:
+          type: string
+          format: string
+          example: 'Camping des Pinèdes de Valenciennes'
+        prix:
+          type: number
+          format: double
+          example: 10
+        emplacementLibres:
+          type: integer
+          format: integer
+          example: 1
+        note:
+          type: number
+          format: double
+          example: 8.5
+        numeroTelephone:
+          type: string
+          example: +33300000000
+        adresseMail:
+          type: string
+          example: 'camping.valenciennes@pinedes.com'
+        adresse:
+          $ref: '#/components/schemas/GPSLocationResponse'
+    GetCampingsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/GetCampingResponse'
+
+
+
