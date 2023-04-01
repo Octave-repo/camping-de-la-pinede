@@ -151,6 +151,24 @@ paths:
           schema:
             type: boolean
             default: false
+        - name: equipements
+          in: query
+          description: Liste des équipements
+          required: false
+          schema:
+            type: array
+        - name: logements
+          in: query
+          description: Liste des logements
+          required: false
+          schema:
+            type: array
+        - name: nbEtoiles
+          in: query
+          description: Nombre minimal d'étoiles
+          required: false
+          schema:
+            type: integer
       responses:
         200:
           description: OK
@@ -340,8 +358,33 @@ paths:
                 $ref: '#/components/schemas/GetReservationsOfCampingResponse'
         404:
           description: Le camping n'existe pas
+  /campings/equipements:
+    get:
+      tags:
+        - campings
+      summary: Liste de tous les types d'équipements existant.
+      description: Récupère la liste (statique) de tout les types d'équipements
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetEquipementsResponse"
 
-
+  /campings/logements:
+    get:
+      tags:
+        - campings
+      summary: Liste de tous les types d'équipements existant.
+      description: Récupère la liste (statique) de tout les types d'équipements
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetLogementsResponse"
 
 components:
   schemas:
@@ -427,6 +470,19 @@ components:
         adresseMail:
           type: string
           example: 'camping.valenciennes@pinedes.com'
+        equipement:
+          type: array
+          items: 
+            type: string
+            example: MACHINE_A_LAVER
+        typesLogements:
+          type: array
+          items:
+            type: string
+            example: MOBILE_HOME
+        nombreEtoiles:
+          type: integer
+          example: 2
         adresse:
           $ref: '#/components/schemas/GPSLocationResponse'
     GetCampingsResponse:
@@ -458,6 +514,19 @@ components:
         adresseMail:
           type: string
           example: 'camping.valenciennes@pinedes.com'
+        equipement:
+          type: array
+          items: 
+            type: string
+            example: MACHINE_A_LAVER
+        typesLogements:
+          type: array
+          items:
+            type: string
+            example: MOBILE_HOME
+        nombreEtoiles:
+          type: integer
+          example: 2
         adresse:
           $ref: '#/components/schemas/GPSLocationResponse'
     GetAviResponse:
@@ -510,7 +579,7 @@ components:
         dateFin:
           type: string
           example: 30/06/2023
-        nombrePlace:
+        nombrePersonne:
           type: integer
           example: 3
     GetReservationResponse:
@@ -534,7 +603,7 @@ components:
         dateFin:
           type: string
           example: 30/06/2023
-        nombrePlace:
+        nombrePersonne:
           type: integer
           example: 3
     GetReservationOfUtilisateurResponse:
@@ -573,5 +642,13 @@ components:
       type: array
       items:      
         $ref: "#/components/schemas/GetReservationOfUtilisateurResponse"
-    
-      
+    GetEquipementsResponse:
+      type: array
+      items:
+        type: string
+        example: MACHINE_A_LAVER
+    GetLogementsResponse:
+      type: array
+      items:
+        type: string
+        example: MOBILE_HOME
