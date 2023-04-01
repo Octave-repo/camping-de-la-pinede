@@ -1,7 +1,7 @@
 openapi: '3.0.2'
 info:
   title: API Title
-  version: '1.0'
+  version: '1.2'
 servers:
   - url: http://localhost:8080
 tags:
@@ -15,6 +15,9 @@ tags:
     description: Les avis sur un camping
   - name: notes
     description: Ajout de notes sur un camping
+  - name: activites
+    description: Gestion des activité/publicités
+
 
 paths:
   /utilisateurs/{id}:
@@ -376,8 +379,8 @@ paths:
     get:
       tags:
         - campings
-      summary: Liste de tous les types d'équipements existant.
-      description: Récupère la liste (statique) de tout les types d'équipements
+      summary: Liste de tous les types de logements existant.
+      description: Récupère la liste (statique) de tout les types de logements
       responses:
         200:
           description: OK
@@ -385,6 +388,52 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetLogementsResponse"
+  /activite:
+    get:
+      tags:
+        - activites
+      summary: Récupère une pub aléatoire
+      description: Récupère une pub aléatoire ciblée si on utilise
+      parameters:
+        - name: longi
+          in: query
+          description: Longitude de la position de l'utilisateur
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: lati
+          in: query
+          description: Latitude de la position de l'utilisateur
+          required: false
+          schema: 
+            type: number
+            format: double
+      responses:
+        200:
+          description: OK
+          content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/GetActivite'
+    post:
+      tags:
+        - activites
+      summary: Création d'une activité
+      description: Création d'une activité
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostActivite'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetActivite'
+
 
 components:
   schemas:
@@ -652,3 +701,29 @@ components:
       items:
         type: string
         example: MOBILE_HOME
+    GetActivite:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: long
+          example: 1
+        logo:
+          type: string
+          example: www.imgur.com/a/G6rU8
+        lien:
+          type: string
+          example: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+        position:
+          $ref: '#/components/schemas/GPSLocationResponse'
+    PostActivite:
+      type: object
+      properties:
+        logo:
+          type: string
+          example: www.imgur.com/a/G6rU8
+        lien:
+          type: string
+          example: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+        position:
+          $ref: '#/components/schemas/GPSLocationResponse'
