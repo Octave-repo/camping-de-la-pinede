@@ -1,0 +1,13 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /reservation
+
+spring:
+  application:
+    name: reservation-1
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

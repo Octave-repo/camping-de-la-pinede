@@ -8,11 +8,11 @@
 		<version>2.7.10</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>camping</groupId>
+	<groupId>fr</groupId>
 	<artifactId>activite</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>activite</name>
-	<description>Client du Serveur de Registres Eureka</description>
+	<description>activite du Serveur de Registres Eureka</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.6</spring-cloud.version>
