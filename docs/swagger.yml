@@ -9,6 +9,10 @@ tags:
     description: Gestion de l'utilisateur 
   - name: campings
     description: Gestion du camping
+  - name: reservations
+    description: Gestion des réservations
+  - name: avis
+    description: Les avis sur un camping
 
 paths:
   /utilisateurs/{id}:
@@ -62,7 +66,7 @@ paths:
         content:
           application/json:
             schema: 
-              $ref: '#/components/schemas/PostUtilisateurRequest'
+              $ref: '#/components/schemas/GetUtilsateurResponse'
       responses:
         200:
           description: Le client a été mis à jour
@@ -153,6 +157,66 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetCampingsResponse'
+    post:
+      tags:
+        - campings
+      summary: Création d'un camping
+      description: Création d'un camping
+      operationId: postCamping
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/PostCampingRequest'
+      responses:
+        204:
+          description: Le camping a bien été crée
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCampingResponse'
+    put:
+      tags:
+        - campings
+      summary: Mise à jour d'un camping
+      description: Mise à jour d'un camping
+      operationId: putCamping
+      requestBody:
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/GetCampingResponse'
+      responses:
+        200:
+          description: Le camping a bien été mis à jour
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCampingResponse'
+  
+  /campings/{id}/avis:
+    get :
+      tags: 
+        - campings
+        - avis
+      description: Obtenir les avis d'un camping
+      summary: Retourne une liste des avis d'un camping
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identifiant du camping
+          schema:
+            type: number
+            format: long
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAvisResponse'
+
 
           
 
@@ -252,6 +316,47 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/GetCampingResponse'
-
-
-
+    PostCampingRequest:
+      type: object
+      properties:
+        nom:
+          type: string
+          format: string
+          example: 'Camping des Pinèdes de Valenciennes'
+        prix:
+          type: number
+          format: double
+          example: 10
+        emplacementLibres:
+          type: integer
+          format: integer
+          example: 1
+        note:
+          type: number
+          format: double
+          example: 8.5
+        numeroTelephone:
+          type: string
+          example: +33300000000
+        adresseMail:
+          type: string
+          example: 'camping.valenciennes@pinedes.com'
+        adresse:
+          $ref: '#/components/schemas/GPSLocationResponse'
+    GetAviResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          format: long
+          example: 1
+        titre:
+          type: string
+          example: J'ai bien aimé
+        contenu:
+          type: string
+          example: Très bon camping proche de la fameuse plage Valenciennoise
+    GetAvisResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/GetAviResponse'
