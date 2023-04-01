@@ -100,8 +100,7 @@ paths:
                 $ref: '#/components/schemas/GetCampingResponse'
         404:
           description: NOT FOUND
-
-          
+        
   /campings:
     get:
       tags:
@@ -272,8 +271,75 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostNoteRequest'
-
-
+  
+  /reservations:
+    post:
+      tags:
+        - reservations
+      summary: Création d'un réservations
+      description: Création d'un réservations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostReservationRequest'
+      responses:
+        204:
+          description: La réservations a bien été faite
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetReservationResponse'
+  
+  /reservations/utilisateurs/{id}:
+    get:
+      tags:
+        - reservations
+        - utilisateurs
+      summary: Récupère toutes les réservations d'un utilisateur
+      description: Récupère toutes les réservations d'un utilisateur
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identifiant de l'utilisateur
+          schema:
+            type: number
+            format: long
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetReservationsOfUtilisateurResponse'
+        404:
+          description: L'utilisateur n'existe pas
+  
+  /reservations/campings/{id}:
+    get:
+      tags:
+        - reservations
+        - campings
+      summary: Récupère toutes les réservations d'un camping
+      description: Récupère toutes les réservations d'un camping
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identifiant du camping
+          schema:
+            type: number
+            format: long
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetReservationsOfCampingResponse'
+        404:
+          description: Le camping n'existe pas
 
 
 
@@ -427,3 +493,85 @@ components:
           type: number
           format: double
           example: 7.4
+    PostReservationRequest:
+      type: object
+      properties:
+        idCamping:
+          type: number
+          format: long
+          example: 1
+        idUtilisateur:
+          type: number
+          format: long
+          example: 1
+        dateDebut:
+          type: string
+          example: 24/06/2023
+        dateFin:
+          type: string
+          example: 30/06/2023
+        nombrePlace:
+          type: integer
+          example: 3
+    GetReservationResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          format: long
+          example: 1
+        idCamping:
+          type: number
+          format: long
+          example: 1
+        idUtilisateur:
+          type: number
+          format: long
+          example: 1
+        dateDebut:
+          type: string
+          example: 24/06/2023
+        dateFin:
+          type: string
+          example: 30/06/2023
+        nombrePlace:
+          type: integer
+          example: 3
+    GetReservationOfUtilisateurResponse:
+      type: object
+      properties:
+        camping:
+          $ref: '#/components/schemas/GetCampingResponse'
+        dateDebut:
+          type: string
+          example: 24/06/2023
+        dateFin:
+          type: string
+          example: 30/06/2023
+        nombrePlace:
+          type: integer
+          example: 3
+    GetReservationsOfUtilisateurResponse:
+      type: array
+      items:      
+        $ref: "#/components/schemas/GetReservationOfUtilisateurResponse"
+    GetReservationOfCampingResponse:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/GetUtilsateurResponse'
+        dateDebut:
+          type: string
+          example: 24/06/2023
+        dateFin:
+          type: string
+          example: 30/06/2023
+        nombrePlace:
+          type: integer
+          example: 3
+    GetReservationsOfCampingResponse:
+      type: array
+      items:      
+        $ref: "#/components/schemas/GetReservationOfUtilisateurResponse"
+    
+      

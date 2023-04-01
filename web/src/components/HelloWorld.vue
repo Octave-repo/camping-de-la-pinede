@@ -27,15 +27,21 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <Map :pos1="[50.349998, 3.53333]" :pos2="[50.633333, 3.066667]" :zoom=9></Map>
   </div>
 </template>
 
 <script>
+import Map from '@/components/Map.vue';
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
-  }
+  },
+  components: {
+    Map
+}
+
 }
 </script>
 
