@@ -13,6 +13,8 @@ tags:
     description: Gestion des réservations
   - name: avis
     description: Les avis sur un camping
+  - name: notes
+    description: Ajout de notes sur un camping
 
 paths:
   /utilisateurs/{id}:
@@ -50,7 +52,7 @@ paths:
             schema: 
               $ref: '#/components/schemas/PostUtilisateurRequest'
       responses:
-        201:
+        204:
           description: Le client a été crée
           content:
             application/json:
@@ -216,11 +218,60 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAvisResponse'
-
-
-          
-
-        
+    post:
+      tags:
+        - campings
+        - avis
+      summary: Ajoute un avis sur un camping particulier
+      description: Ajoute un avis sur un camping particulier
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identifiant du camping
+          schema:
+            type: number
+            format: long
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostAviRequest'
+      responses:
+        204:
+          description: L'avis à bien été crée
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAviResponse'
+  
+  /campings/{id}/notes:
+    post:
+      tags:
+        - campings
+        - notes
+      summary: Ajoute une note sur un camping
+      description: Ajoute une note sur un camping
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identifiant du camping
+          schema:
+            type: number
+            format: long
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostNoteRequest'
+      responses:
+        204:
+          description: La note a bien été ajoutée
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostNoteRequest'
 
 
 
@@ -360,3 +411,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/GetAviResponse'
+    PostAviRequest:
+      type: object
+      properties:
+        titre:
+          type: string
+          example: J'ai bien aimé
+        contenu:
+          type: string
+          example: Très bon camping proche de la fameuse plage Valenciennoise
+    PostNoteRequest:
+      type: object
+      properties:
+        note:
+          type: number
+          format: double
+          example: 7.4
