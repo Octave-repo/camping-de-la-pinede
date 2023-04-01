@@ -1,7 +1,7 @@
 openapi: '3.0.2'
 info:
   title: API Title
-  version: '1.0'
+  version: '1.2'
 servers:
   - url: http://localhost:8080
 tags:
@@ -15,6 +15,9 @@ tags:
     description: Les avis sur un camping
   - name: notes
     description: Ajout de notes sur un camping
+  - name: activites
+    description: Gestion des activité/publicités
+
 
 paths:
   /utilisateurs/{id}:
@@ -151,6 +154,24 @@ paths:
           schema:
             type: boolean
             default: false
+        - name: equipements
+          in: query
+          description: Liste des équipements
+          required: false
+          schema:
+            type: array
+        - name: logements
+          in: query
+          description: Liste des logements
+          required: false
+          schema:
+            type: array
+        - name: nbEtoiles
+          in: query
+          description: Nombre minimal d'étoiles
+          required: false
+          schema:
+            type: integer
       responses:
         200:
           description: OK
@@ -340,7 +361,78 @@ paths:
                 $ref: '#/components/schemas/GetReservationsOfCampingResponse'
         404:
           description: Le camping n'existe pas
+  /campings/equipements:
+    get:
+      tags:
+        - campings
+      summary: Liste de tous les types d'équipements existant.
+      description: Récupère la liste (statique) de tout les types d'équipements
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetEquipementsResponse"
 
+  /campings/logements:
+    get:
+      tags:
+        - campings
+      summary: Liste de tous les types de logements existant.
+      description: Récupère la liste (statique) de tout les types de logements
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetLogementsResponse"
+  /activite:
+    get:
+      tags:
+        - activites
+      summary: Récupère une pub aléatoire
+      description: Récupère une pub aléatoire ciblée si on utilise
+      parameters:
+        - name: longi
+          in: query
+          description: Longitude de la position de l'utilisateur
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: lati
+          in: query
+          description: Latitude de la position de l'utilisateur
+          required: false
+          schema: 
+            type: number
+            format: double
+      responses:
+        200:
+          description: OK
+          content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/GetActivite'
+    post:
+      tags:
+        - activites
+      summary: Création d'une activité
+      description: Création d'une activité
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostActivite'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetActivite'
 
 
 components:
@@ -427,6 +519,19 @@ components:
         adresseMail:
           type: string
           example: 'camping.valenciennes@pinedes.com'
+        equipement:
+          type: array
+          items: 
+            type: string
+            example: MACHINE_A_LAVER
+        typesLogements:
+          type: array
+          items:
+            type: string
+            example: MOBILE_HOME
+        nombreEtoiles:
+          type: integer
+          example: 2
         adresse:
           $ref: '#/components/schemas/GPSLocationResponse'
     GetCampingsResponse:
@@ -458,6 +563,19 @@ components:
         adresseMail:
           type: string
           example: 'camping.valenciennes@pinedes.com'
+        equipement:
+          type: array
+          items: 
+            type: string
+            example: MACHINE_A_LAVER
+        typesLogements:
+          type: array
+          items:
+            type: string
+            example: MOBILE_HOME
+        nombreEtoiles:
+          type: integer
+          example: 2
         adresse:
           $ref: '#/components/schemas/GPSLocationResponse'
     GetAviResponse:
@@ -510,7 +628,7 @@ components:
         dateFin:
           type: string
           example: 30/06/2023
-        nombrePlace:
+        nombrePersonne:
           type: integer
           example: 3
     GetReservationResponse:
@@ -534,7 +652,7 @@ components:
         dateFin:
           type: string
           example: 30/06/2023
-        nombrePlace:
+        nombrePersonne:
           type: integer
           example: 3
     GetReservationOfUtilisateurResponse:
@@ -573,5 +691,39 @@ components:
       type: array
       items:      
         $ref: "#/components/schemas/GetReservationOfUtilisateurResponse"
-    
-      
+    GetEquipementsResponse:
+      type: array
+      items:
+        type: string
+        example: MACHINE_A_LAVER
+    GetLogementsResponse:
+      type: array
+      items:
+        type: string
+        example: MOBILE_HOME
+    GetActivite:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: long
+          example: 1
+        logo:
+          type: string
+          example: www.imgur.com/a/G6rU8
+        lien:
+          type: string
+          example: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+        position:
+          $ref: '#/components/schemas/GPSLocationResponse'
+    PostActivite:
+      type: object
+      properties:
+        logo:
+          type: string
+          example: www.imgur.com/a/G6rU8
+        lien:
+          type: string
+          example: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+        position:
+          $ref: '#/components/schemas/GPSLocationResponse'
