@@ -1,4 +1,4 @@
-package services.dto;
+package fr.utilisateur.services.dto;
 
 import fr.utilisateur.entities.GPSLocation;
 import lombok.*;
@@ -10,7 +10,8 @@ import javax.persistence.OneToOne;
 @Getter
 @Setter
 @Builder
-public class PostUtilisateurRequest {
+public class PostUtilisateurResponse {
+    private long id;
     private String nom;
     private String prenom;
     private String telephone;

@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="10" />
+    <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="10">
+      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/controller/UtilisateurController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/controller/common/HttpErreurFonctionnelle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/services/UtilisateurService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/services/dto/PostUtilisateurResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/repository/UtilisateurRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/repository/UtilisateurRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/services/UtilisateurService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/services/dto/PostUtilisateurRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/services/dto/PostUtilisateurRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/services/dto/PostUtilisateurResponse.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
