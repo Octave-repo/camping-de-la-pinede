@@ -1,7 +1,7 @@
 package fr.camping.services.dto;
 
-import fr.camping.entity.Equipement;
-import fr.camping.entity.Equipement;
+
+import fr.camping.entity.Equipements;
 import fr.camping.entity.GPSLocation;
 import fr.camping.entity.TypeLogements;
 import lombok.*;

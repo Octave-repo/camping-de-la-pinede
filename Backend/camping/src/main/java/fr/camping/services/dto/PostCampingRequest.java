@@ -17,7 +17,7 @@ public class PostCampingRequest {
     private double note;
     private String numeroTelephone;
     private String adresseMail;
-    private List<Equipement> equipement;
+    private List<Equipements> equipement;
     private List<TypeLogements> typeLogements;
     private int nombreEtoiles;
     private GPSLocation adresse;
