@@ -1,6 +1,6 @@
 package fr.camping.entity;
 
-public enum Equipements {
+public enum Equipement {
     TELEVISION,
     MACHINE_A_LAVER,
     PISCINE,
