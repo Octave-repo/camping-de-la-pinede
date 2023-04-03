@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="10">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_10_44__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/services/UtilisateurService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/services/dto/PostUtilisateurRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Camping.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Camping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/GPSLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/GPSLocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/resources/application.yml" afterDir="false" />
-    </list>
+    <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="10" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +26,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/maxence/Desktop/univ/Master/M1/S2/API/TP/camping-de-la-pinede/Backend/activite",
+    "last_opened_file_path": "C:/Users/maxence/Desktop/univ/Master/M1/S2/API/TP/camping-de-la-pinede/Backend/reservation",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
