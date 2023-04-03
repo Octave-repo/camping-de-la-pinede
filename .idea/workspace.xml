@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="pom">
-      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/repository/UtilisateurRepository.java" afterDir="false" />
+    <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="08">
+      <change afterPath="$PROJECT_DIR$/Backend/activite/src/main/java/fr/activite/Entities/Activite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/activite/src/main/java/fr/activite/Repository/ActiviteRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/entities/GPSLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/entities/GPSLocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/activite/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/activite/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/activite/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/activite/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +51,7 @@
       <updated>1680331781407</updated>
       <workItem from="1680331782697" duration="105000" />
       <workItem from="1680331897008" duration="2529000" />
-      <workItem from="1680505884359" duration="757000" />
+      <workItem from="1680505884359" duration="1744000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1680341972978</created>
@@ -68,7 +67,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680341986935</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="08">
+      <created>1680508199585</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680508199585</updated>
+    </task>
+    <task id="LOCAL-00004" summary="08">
+      <created>1680508214498</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680508214498</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -87,6 +100,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pom" />
-    <option name="LAST_COMMIT_MESSAGE" value="pom" />
+    <MESSAGE value="08" />
+    <option name="LAST_COMMIT_MESSAGE" value="08" />
   </component>
 </project>
