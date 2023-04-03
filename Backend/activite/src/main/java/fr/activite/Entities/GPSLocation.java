@@ -1,4 +1,4 @@
-package fr.utilisateur.entities;
+package fr.activite.Entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

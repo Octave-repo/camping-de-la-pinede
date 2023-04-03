@@ -4,10 +4,32 @@ server:
     context-path: /utilisateur
 
 spring:
+  datasource:
+    url: jdbc:h2:mem:utilisateur
+    username: root
+    password: password
+    jpa:
+      spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+      defer-datasource-initialization: true # Pour eviter que le script data.txt s'execute avant l'initialisation Hibernate.
+      properties:
+        hibernate:
+          show_sql: true
+          use_sql_comments: true
+          format_sql: true
+          ddl-auto: update
+    h2:
+      console.enabled: true # Acc?s ? la console H2 dans votre navigateur http://localhost:3/h2-console
+  logging:
+    level:
+      org:
+        hibernate:
+          type: trace #Pour loguer les valeurs dans les requ�tes sql
   application:
-    name: utilisateur-1
+    name: utilisateur
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+
+
