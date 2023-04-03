@@ -30,7 +30,7 @@ public class Camping {
 
     //@Enumerated (EnumType.STRING)
     @ElementCollection
-    private List<Equipements> equipements;
+    private List<Equipement> equipement;
 
     @ElementCollection
     private List<TypeLogements> typeLogements;
