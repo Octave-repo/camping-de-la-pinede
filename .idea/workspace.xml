@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="10">
-      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/services/dto/PutUtilisateurRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_14_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_14_12__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/serveur-camping/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/serveur-camping/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/serveur-camping/src/main/java/fr/serveurcamping/ServeurCampingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/serveur-camping/src/main/java/fr/serveurcamping/ServeurCampingApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/services/UtilisateurService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/services/UtilisateurService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
