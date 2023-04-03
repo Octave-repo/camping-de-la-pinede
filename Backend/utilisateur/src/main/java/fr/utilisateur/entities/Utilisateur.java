@@ -2,10 +2,8 @@ package fr.utilisateur.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import fr.utilisateur.entities.GPSLocation;
+import javax.persistence.*;
+
 
 @Getter
 @Setter
@@ -22,6 +20,8 @@ public class Utilisateur {
     private String prenom;
     private String telephone;
     private String mail;
+
+    @OneToOne
     private GPSLocation adresse;
 
 }

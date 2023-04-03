@@ -4,13 +4,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.lang.Math;
 
 @NoArgsConstructor
 @Getter
 @Setter
-
+@Entity
 public class GPSLocation{
+    @Id
+    @GeneratedValue
+    private long id;
+
     private String nom;
     private double longitude;
     private double latitude;
