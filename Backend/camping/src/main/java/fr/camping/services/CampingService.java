@@ -2,10 +2,15 @@ package fr.camping.services;
 
 import fr.camping.entity.Camping;
 import fr.camping.repository.CampingRepository;
+import fr.camping.services.dto.GetCampingResponse;
 import fr.camping.services.dto.PostCampingRequest;
 import fr.camping.services.dto.PostCampingResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @Service
 public class CampingService {
@@ -42,6 +47,24 @@ public class CampingService {
                 .typeLogements(campingSave.getTypeLogements())
                 .nombreEtoiles(campingSave.getNombreEtoiles())
                 .adresse(campingSave.getAdresse())
+                .build();
+    }
+
+    public GetCampingResponse getCamping (long id){
+        Camping camping = this.campingRepository.findCampingById(id);
+        if (camping== null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Compte not found");
+        }
+        return GetCampingResponse.builder()
+                .id(camping.getId())
+                .nom(camping.getNom())
+                .prix(camping.getPrix())
+                .emplacementLibres(camping.getEmplacementLibres())
+                .note(camping.getNote())
+                .equipement(camping.getEquipement())
+                .typeLogements(camping.getTypeLogements())
+                .nombreEtoiles(camping.getNombreEtoiles())
+                .adresse(camping.getAdresse())
                 .build();
     }
 }
