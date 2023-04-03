@@ -15,6 +15,7 @@ import java.lang.Math;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+public
 class GPSLocation{
     @Id
     @GeneratedValue
