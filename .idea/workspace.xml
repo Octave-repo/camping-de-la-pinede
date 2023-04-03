@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="10">
-      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/services/dto/PutUtilisateurRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_14_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_14_12__Changes_.xml" afterDir="false" />
+    <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="21">
+      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/PutCampingRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/serveur-camping/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/serveur-camping/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/serveur-camping/src/main/java/fr/serveurcamping/ServeurCampingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/serveur-camping/src/main/java/fr/serveurcamping/ServeurCampingApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/services/UtilisateurService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/services/UtilisateurService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +25,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "C:/Users/maxence/Desktop/univ/Master/M1/S2/API/TP/camping-de-la-pinede/Backend/serveur-camping",
-    "node.js.selected.package.tslint": "(autodetect)"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -45,6 +40,7 @@
       <workItem from="1680331782697" duration="105000" />
       <workItem from="1680331897008" duration="2529000" />
       <workItem from="1680505884359" duration="1744000" />
+      <workItem from="1680529532278" duration="727000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1680341972978</created>

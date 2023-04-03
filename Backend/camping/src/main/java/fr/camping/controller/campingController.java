@@ -5,12 +5,10 @@ import fr.camping.services.CampingService;
 import fr.camping.services.dto.GetCampingResponse;
 import fr.camping.services.dto.PostCampingRequest;
 import fr.camping.services.dto.PostCampingResponse;
+import fr.camping.services.dto.PutCampingRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 public class campingController {
     @Autowired
@@ -20,10 +18,10 @@ public class campingController {
     private ResponseEntity createcamping(@RequestBody PostCampingRequest postCampingRequest){
         //On vérifie que les données en entrées sont correctes
         if (postCampingRequest == null || postCampingRequest.getNom() == null ||
-                postCampingRequest.getPrix() <= 0 || postCampingRequest.getEmplacementLibres() <= 0
-                || postCampingRequest.getNote() <= 0 || postCampingRequest.getNumeroTelephone() == null
+                postCampingRequest.getPrix() < 0 || postCampingRequest.getEmplacementLibres() < 0
+                || postCampingRequest.getNote() < 0 || postCampingRequest.getNumeroTelephone() == null
                 || postCampingRequest.getAdresseMail() == null || postCampingRequest.getEquipement() == null
-                || postCampingRequest.getTypeLogements() == null || postCampingRequest.getNombreEtoiles() <= 0
+                || postCampingRequest.getTypeLogements() == null || postCampingRequest.getNombreEtoiles() < 0
                 || postCampingRequest.getAdresse() == null){
             return ResponseEntity.badRequest().body(
                     new HttpErreurFonctionnelle("Les donnnées en entrée du service sont non renseignes ou incorrectes"));
@@ -48,6 +46,27 @@ public class campingController {
                 return ResponseEntity.noContent().build();
         } catch (Exception e){
             return ResponseEntity.internalServerError().body("Une erreur interne a été rencontrée");
+        }
+    }
+
+    @PutMapping
+    private ResponseEntity createcamping(@RequestBody PutCampingRequest putCampingRequest){
+        //On vérifie que les données en entrées sont correctes
+        if (putCampingRequest == null || putCampingRequest.getNom() == null ||
+                putCampingRequest.getPrix() < 0 || putCampingRequest.getEmplacementLibres() < 0
+                || putCampingRequest.getNote() < 0 || putCampingRequest.getEquipement() == null
+                || putCampingRequest.getTypeLogements() == null || putCampingRequest.getNombreEtoiles() < 0
+                || putCampingRequest.getAdresse() == null){
+            return ResponseEntity.badRequest().body(
+                    new HttpErreurFonctionnelle("Les donnnées en entrée du service sont non renseignes ou incorrectes"));
+        }
+        else{
+            try{
+                PostCampingResponse response = this.campingServiceService.updatecamping(putCampingRequest);
+                return ResponseEntity.ok().body(response);
+            } catch (Exception e){
+                return ResponseEntity.internalServerError().body("Une erreur interne a été rencontrée");
+            }
         }
     }
 }

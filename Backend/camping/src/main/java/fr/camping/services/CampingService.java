@@ -5,6 +5,7 @@ import fr.camping.repository.CampingRepository;
 import fr.camping.services.dto.GetCampingResponse;
 import fr.camping.services.dto.PostCampingRequest;
 import fr.camping.services.dto.PostCampingResponse;
+import fr.camping.services.dto.PutCampingRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -66,5 +67,20 @@ public class CampingService {
                 .nombreEtoiles(camping.getNombreEtoiles())
                 .adresse(camping.getAdresse())
                 .build();
+    }
+    public PostCampingResponse updatecamping(PutCampingRequest campingRequest){
+        Camping camping = this.campingRepository.findCampingById(campingRequest.getId());
+        if (camping == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found");
+        }
+        camping.setNom(campingRequest.getNom());
+        camping.setPrix(campingRequest.getPrix());
+        camping.setEmplacementLibres(campingRequest.getEmplacementLibres());
+        camping.setNote(campingRequest.getNote());
+        camping.setEquipement(campingRequest.getEquipement());
+        camping.setTypeLogements(campingRequest.getTypeLogements());
+        camping.setAdresse(campingRequest.getAdresse());
+        this.campingRepository.save(camping);
+        return buildCreateCampingReponse(camping);
     }
 }
