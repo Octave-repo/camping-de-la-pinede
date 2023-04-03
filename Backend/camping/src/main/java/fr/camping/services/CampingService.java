@@ -38,7 +38,7 @@ public class CampingService {
                 .note(campingSave.getNote())
                 .numeroTelephone(campingSave.getNumeroTelephone())
                 .adresseMail(campingSave.getAdresseMail())
-                .equipement(campingSave.getEquipements())
+                .equipements(campingSave.getEquipements())
                 .typeLogements(campingSave.getTypeLogements())
                 .nombreEtoiles(campingSave.getNombreEtoiles())
                 .adresse(campingSave.getAdresse())
