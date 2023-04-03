@@ -1,0 +1,208 @@
+Index: Backend/utilisateur/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8083\r\n  servlet:\r\n    context-path: /utilisateur\r\n\r\nspring:\r\n  application:\r\n    name: utilisateur-1\r\n\r\neureka:\r\n  client:\r\n    serviceUrl:\r\n      defaultZone: http://localhost:8761/eureka\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/Backend/utilisateur/src/main/resources/application.yml b/Backend/utilisateur/src/main/resources/application.yml
+--- a/Backend/utilisateur/src/main/resources/application.yml	(revision 33b96c34efbf1436b50731f50cad91517699916d)
++++ b/Backend/utilisateur/src/main/resources/application.yml	(date 1680343328408)
+@@ -5,9 +5,31 @@
+ 
+ spring:
+   application:
+-    name: utilisateur-1
++    name: utilisateur
++  datasource:
++    url: jdbc:h2:mem:utilisateur
++    username: root
++    password: password
++    jpa:
++      spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
++      defer-datasource-initialization: true # Pour eviter que le script data.txt s'execute avant l'initialisation Hibernate.
++      properties:
++        hibernate:
++          show_sql: true
++          use_sql_comments: true
++          format_sql: true
++          ddl-auto: update
++    h2:
++      console.enabled: true # Acc?s ? la console H2 dans votre navigateur http://localhost:8080/h2-console
++  logging:
++    level:
++      org:
++        hibernate:
++          type: trace #Pour loguer les valeurs dans les requ�tes sql
+ 
+ eureka:
+   client:
+     serviceUrl:
+       defaultZone: http://localhost:8761/eureka
++
++
+Index: Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package fr.utilisateur.entities;\r\n\r\nimport lombok.*;\r\n\r\nimport javax.persistence.Entity;\r\nimport javax.persistence.GeneratedValue;\r\nimport javax.persistence.Id;\r\nimport fr.utilisateur.entities.GPSLocation;\r\n\r\n@Getter\r\n@Setter\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Entity\r\n@Builder\r\npublic class Utilisateur {\r\n    @Id\r\n    @GeneratedValue\r\n    private long id;\r\n\r\n    private String nom;\r\n    private String prenom;\r\n    private String telephone;\r\n    private String mail;\r\n    private GPSLocation adresse;\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java b/Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java
+--- a/Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java	(revision 33b96c34efbf1436b50731f50cad91517699916d)
++++ b/Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java	(date 1680342813683)
+@@ -5,6 +5,8 @@
+ import javax.persistence.Entity;
+ import javax.persistence.GeneratedValue;
+ import javax.persistence.Id;
++import javax.persistence.OneToMany;
++
+ import fr.utilisateur.entities.GPSLocation;
+ 
+ @Getter
+@@ -22,6 +24,8 @@
+     private String prenom;
+     private String telephone;
+     private String mail;
++
++    @OneToMany
+     private GPSLocation adresse;
+ 
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"51317265-bc53-4d5d-9a92-7b68cd0a878c\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Camping.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Backend/activite/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Backend/activite/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Backend/camping/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Backend/camping/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/CampingApplication.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/CampingApplication.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Backend/utilisateur/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Backend/utilisateur/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/UtilisateurApplication.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/UtilisateurApplication.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2NoYDNyRBDE7ODd9fwdHwxLv4ar\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"C:/Users/maxence/Desktop/univ/Master/M1/S2/API/TP/camping-de-la-pinede/Backend/activite\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"51317265-bc53-4d5d-9a92-7b68cd0a878c\" name=\"Changes\" comment=\"\" />\r\n      <created>1680331781407</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1680331781407</updated>\r\n      <workItem from=\"1680331782697\" duration=\"105000\" />\r\n      <workItem from=\"1680331897008\" duration=\"1843000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 33b96c34efbf1436b50731f50cad91517699916d)
++++ b/.idea/workspace.xml	(date 1680343227240)
+@@ -4,14 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Camping.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Backend/activite/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/activite/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Backend/camping/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/CampingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/CampingApplication.java" afterDir="false" />
++    <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="pom">
++      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/repository/UtilisateurRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/Backend/utilisateur/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/UtilisateurApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/UtilisateurApplication.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/entities/GPSLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/entities/GPSLocation.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/resources/application.yml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -52,8 +51,23 @@
+       <option name="presentableId" value="Default" />
+       <updated>1680331781407</updated>
+       <workItem from="1680331782697" duration="105000" />
+-      <workItem from="1680331897008" duration="1843000" />
++      <workItem from="1680331897008" duration="2515000" />
++    </task>
++    <task id="LOCAL-00001" summary="pom">
++      <created>1680341972978</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1680341972978</updated>
+     </task>
++    <task id="LOCAL-00002" summary="pom">
++      <created>1680341986935</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1680341986935</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -70,4 +84,8 @@
+       </map>
+     </option>
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="pom" />
++    <option name="LAST_COMMIT_MESSAGE" value="pom" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: Backend/utilisateur/src/main/java/fr/utilisateur/entities/GPSLocation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package fr.utilisateur.entities;\r\n\r\nimport lombok.Getter;\r\nimport lombok.NoArgsConstructor;\r\nimport lombok.Setter;\r\n\r\nimport java.lang.Math;\r\n\r\n@NoArgsConstructor\r\n@Getter\r\n@Setter\r\n\r\npublic class GPSLocation{\r\n    private String nom;\r\n    private double longitude;\r\n    private double latitude;\r\n    private final static double RAYON = 637.371;\r\n\r\n    public GPSLocation(double latitude, double longitude){\r\n        this.longitude = longitude;\r\n        this.latitude = latitude;\r\n    }\r\n    public double distanceVers(GPSLocation that){\r\n        double lat1 = Math.toRadians(this.latitude);\r\n        double lat2 = Math.toRadians(that.getLatitude());\r\n        double long1 = Math.toRadians(this.longitude);\r\n        double long2 = Math.toRadians(that.getLongitude());\r\n\r\n        double angle = Math.acos(Math.sin(lat1) * Math.sin(lat2)\r\n                               + Math.cos(lat1) * Math.cos(lat2) * Math.cos(long1 - long2));\r\n                               \r\n        return RAYON * 2 * Math.atan2(Math.sqrt(angle), Math.sqrt(1-angle));\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Backend/utilisateur/src/main/java/fr/utilisateur/entities/GPSLocation.java b/Backend/utilisateur/src/main/java/fr/utilisateur/entities/GPSLocation.java
+--- a/Backend/utilisateur/src/main/java/fr/utilisateur/entities/GPSLocation.java	(revision 33b96c34efbf1436b50731f50cad91517699916d)
++++ b/Backend/utilisateur/src/main/java/fr/utilisateur/entities/GPSLocation.java	(date 1680342834870)
+@@ -4,6 +4,8 @@
+ import lombok.NoArgsConstructor;
+ import lombok.Setter;
+ 
++import javax.persistence.GeneratedValue;
++import javax.persistence.Id;
+ import java.lang.Math;
+ 
+ @NoArgsConstructor
+@@ -11,6 +13,10 @@
+ @Setter
+ 
+ public class GPSLocation{
++    @Id
++    @GeneratedValue
++    private Long id;
++
+     private String nom;
+     private double longitude;
+     private double latitude;
+Index: Backend/utilisateur/src/main/java/fr/utilisateur/repository/UtilisateurRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Backend/utilisateur/src/main/java/fr/utilisateur/repository/UtilisateurRepository.java b/Backend/utilisateur/src/main/java/fr/utilisateur/repository/UtilisateurRepository.java
+new file mode 100644
+--- /dev/null	(date 1680342676191)
++++ b/Backend/utilisateur/src/main/java/fr/utilisateur/repository/UtilisateurRepository.java	(date 1680342676191)
+@@ -0,0 +1,9 @@
++package fr.utilisateur.repository;
++
++import fr.utilisateur.entities.Utilisateur;
++import org.springframework.data.jpa.repository.JpaRepository;
++
++public interface UtilisateurRepository extends JpaRepository<Utilisateur,Long> {
++    Utilisateur findUtilisateurById(Long id);
++}
++
+Index: Backend/utilisateur/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n\txsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n\t<modelVersion>4.0.0</modelVersion>\r\n\t<parent>\r\n\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t<artifactId>spring-boot-starter-parent</artifactId>\r\n\t\t<version>2.7.10</version>\r\n\t\t<relativePath/> <!-- lookup parent from repository -->\r\n\t</parent>\r\n\t<groupId>fr</groupId>\r\n\t<artifactId>utilisateur</artifactId>\r\n\t<version>0.0.1-SNAPSHOT</version>\r\n\t<name>utilisateur</name>\r\n\t<description>utilisateur du Serveur de Registres Eureka</description>\r\n\t<properties>\r\n\t\t<java.version>17</java.version>\r\n\t\t<spring-cloud.version>2021.0.6</spring-cloud.version>\r\n\t</properties>\r\n\t<dependencies>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-web</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.cloud</groupId>\r\n\t\t\t<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.projectlombok</groupId>\r\n\t\t\t<artifactId>lombok</artifactId>\r\n\t\t\t<optional>true</optional>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-test</artifactId>\r\n\t\t\t<scope>test</scope>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-data-jpa</artifactId>\r\n\t\t\t<version>RELEASE</version>\r\n\t\t\t<scope>compile</scope>\r\n\t\t</dependency>\r\n\t</dependencies>\r\n\t<dependencyManagement>\r\n\t\t<dependencies>\r\n\t\t\t<dependency>\r\n\t\t\t\t<groupId>org.springframework.cloud</groupId>\r\n\t\t\t\t<artifactId>spring-cloud-dependencies</artifactId>\r\n\t\t\t\t<version>${spring-cloud.version}</version>\r\n\t\t\t\t<type>pom</type>\r\n\t\t\t\t<scope>import</scope>\r\n\t\t\t</dependency>\r\n\t\t\t<dependency>\r\n\t\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t\t<artifactId>spring-boot-starter-data-jpa</artifactId>\r\n\t\t\t</dependency>\r\n\t\t</dependencies>\r\n\t</dependencyManagement>\r\n\r\n\t<build>\r\n\t\t<plugins>\r\n\t\t\t<plugin>\r\n\t\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t\t<artifactId>spring-boot-maven-plugin</artifactId>\r\n\t\t\t\t<configuration>\r\n\t\t\t\t\t<excludes>\r\n\t\t\t\t\t\t<exclude>\r\n\t\t\t\t\t\t\t<groupId>org.projectlombok</groupId>\r\n\t\t\t\t\t\t\t<artifactId>lombok</artifactId>\r\n\t\t\t\t\t\t</exclude>\r\n\t\t\t\t\t</excludes>\r\n\t\t\t\t</configuration>\r\n\t\t\t</plugin>\r\n\t\t</plugins>\r\n\t</build>\r\n\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Backend/utilisateur/pom.xml b/Backend/utilisateur/pom.xml
+--- a/Backend/utilisateur/pom.xml	(revision 33b96c34efbf1436b50731f50cad91517699916d)
++++ b/Backend/utilisateur/pom.xml	(date 1680343109738)
+@@ -56,6 +56,11 @@
+ 				<groupId>org.springframework.boot</groupId>
+ 				<artifactId>spring-boot-starter-data-jpa</artifactId>
+ 			</dependency>
++			<dependency>
++				<groupId>com.h2database</groupId>
++				<artifactId>h2</artifactId>
++				<scope>runtime</scope>
++			</dependency>
+ 		</dependencies>
+ 	</dependencyManagement>
+ 
