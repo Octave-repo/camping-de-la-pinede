@@ -12,7 +12,7 @@ import fr.utilisateur.services.dto.PostUtilisateurResponse;
 import java.util.List;
 
 @RestController
-//@RequestMapping("utilisateur")
+@RequestMapping("utilisateur")
 public class UtilisateurController {
     @Autowired
     private UtilisateurService utilisateurService;
