@@ -21,7 +21,7 @@ public class Utilisateur {
     private String telephone;
     private String mail;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private GPSLocation adresse;
 
 
