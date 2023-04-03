@@ -5,8 +5,23 @@ server:
 
 spring:
   application:
-    name: reservation-1
+    name: camping-1
+  datasource:
+    url: jdbc:h2:men:Camping
+    username: root
+    password: password
+    jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+      defer-datasource-initialization: true
+    h2:
+      console:
+        enabled: true
 
+  logging:
+    level:
+      org:
+        hibernate:
+          type: trace
 eureka:
   client:
     serviceUrl:

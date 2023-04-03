@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Camping.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/entities/Utilisateur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/activite/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/activite/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/camping/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/CampingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/CampingApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/UtilisateurApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/utilisateur/src/main/java/fr/utilisateur/UtilisateurApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/GPSLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/GPSLocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/repository/CampingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/repository/CampingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/reservation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/reservation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/reservation/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/reservation/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,20 +29,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/maxence/Desktop/univ/Master/M1/S2/API/TP/camping-de-la-pinede/Backend/activite",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -53,6 +49,9 @@
       <updated>1680331781407</updated>
       <workItem from="1680331782697" duration="105000" />
       <workItem from="1680331897008" duration="1843000" />
+      <workItem from="1680505557731" duration="13000" />
+      <workItem from="1680505583158" duration="598000" />
+      <workItem from="1680508357197" duration="1593000" />
     </task>
     <servers />
   </component>

@@ -16,7 +16,7 @@ import java.lang.Math;
 @Entity
 class GPSLocation{
     @Id
-    private String id;
+    private long id;
     private String nom;
     private double longitude;
     private double latitude;
