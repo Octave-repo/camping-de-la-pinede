@@ -56,7 +56,7 @@
     justify-content: space-between;
 }
 .wrapper-log{
-    width: 125px;
+    width: 130px;
     height: 25px;
     background-color: lightgreen;
     margin: 5px;
@@ -73,9 +73,11 @@
 }
 .wrapper-profile:hover{
   background-color: coral;
+  cursor: pointer;
 }
 .wrapper-log:hover{
   background-color: goldenrod;
+  cursor: pointer;
 }
 .nickname {
   display: flex;
