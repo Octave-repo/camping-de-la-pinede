@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="10">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_11_01__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_11_01__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/PostCampingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/PostCampingRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/PostCampingResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/PostCampingResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_11_01__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/controller/campingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/controller/common/HttpErreurFonctionnelle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/GetCampingResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/PostCampingRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/PostCampingResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_10_44__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_10_44__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Camping.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Camping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Equipements.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Equipement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/GPSLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/GPSLocation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +34,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
