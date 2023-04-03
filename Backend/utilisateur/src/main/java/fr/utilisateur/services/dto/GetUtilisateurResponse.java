@@ -1,28 +1,18 @@
-package fr.utilisateur.entities;
+package fr.utilisateur.services.dto;
 
+import fr.utilisateur.entities.GPSLocation;
 import lombok.*;
 
-import javax.persistence.*;
-
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
 @Builder
-public class Utilisateur {
-    @Id
-    @GeneratedValue
+public class GetUtilisateurResponse {
     private long id;
-
     private String nom;
     private String prenom;
     private String telephone;
     private String mail;
-
-    @OneToOne
     private GPSLocation adresse;
-
-
 }
