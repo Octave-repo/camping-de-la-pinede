@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.lang.Math;
 
@@ -16,7 +17,8 @@ import java.lang.Math;
 @Entity
 class GPSLocation{
     @Id
-    private long id;
+    @GeneratedValue
+    private String id;
     private String nom;
     private double longitude;
     private double latitude;

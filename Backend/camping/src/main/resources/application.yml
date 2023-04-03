@@ -1,27 +1,31 @@
- server:
+server:
   port: 8081
   servlet:
     context-path: /camping
 
 spring:
   application:
-    name: camping-1
+    name: camping
   datasource:
-    url: jdbc:h2:men:Camping
+    url: jdbc:h2:mem:camping
     username: root
     password: password
     jpa:
-      database-platform: org.hibernate.dialect.H2Dialect
-      defer-datasource-initialization: true
-    h2:
-      console:
-        enabled: true
-
-  logging:
-    level:
-      org:
+      spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+      defer-datasource-initialization: true # Pour eviter que le script data.txt s'execute avant l'initialisation Hibernate.
+      properties:
         hibernate:
-         type: trace
+          show_sql: true
+          use_sql_comments: true
+          format_sql: true
+          ddl-auto: update
+    h2:
+      console.enabled: true # Acc?s ? la console H2 dans votre navigateur http://localhost:3/h2-console
+    logging:
+      level:
+        org:
+          hibernate:
+            type: trace #Pour loguer les valeurs dans les requ�tes sql
 
 
 eureka:
