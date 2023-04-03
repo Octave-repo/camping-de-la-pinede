@@ -10,6 +10,9 @@ class CampingApi{
     getCampings(){
         return InstanceAxios.get(`${path}/campings`);
     }
+    getCamping(id){
+        return InstanceAxios.get(`${path}/campings/${id}`);
+    }
 }
 
 export default new CampingApi();
