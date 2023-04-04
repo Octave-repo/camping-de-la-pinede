@@ -14,7 +14,7 @@
         <label>Adresse mail</label>
         <input type="mail" v-model="camping.adresseMail">
         <label>Nombre d'étoiles</label>
-        <input type="number" v-model="camping.nombresEtoiles">
+        <input type="number" v-model="camping.nombreEtoiles">
         <fieldset>
             <legend>Types de logements</legend>
             <div>
@@ -66,9 +66,12 @@ export default{
     methods: {
         async confirmer(){
             this.camping.typeLogements = this.checkedLogements;
-            this.camping.equipements = this.checkedEquipement;
+            this.camping.equipement = this.checkedEquipement;
             console.log(this.camping);
             try{
+                this.camping.adresse.nom = "Valenciennes";
+                this.camping.adresse.latitude = 50.3333;
+                this.camping.adresse.longitude = 4.4555;
                 await CampingService.postCamping(this.camping);
                 this.$router.push('/');
             } catch (error){
