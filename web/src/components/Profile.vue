@@ -21,9 +21,9 @@
     export default {
       setup() {
         const auth0 = useAuth0();
-  
+          
         return {
-          login: () => auth0.loginWithRedirect(),
+          login: () => auth0.loginWithRedirect() ,
           user: auth0.user,
           isAuthenticated: auth0.isAuthenticated,
           isLoading: auth0.isLoading,
