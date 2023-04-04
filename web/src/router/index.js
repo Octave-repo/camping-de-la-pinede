@@ -1,7 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CampingSearchView from '../views/CampingSearchView.vue'
-import CampingView from '../views/CampingView.vue' 
+import CampingView from '../views/CampingView.vue'
+import UtilisateurView from '../views/UtilisateurView.vue'
+import CreateCampingView from '../views/CreateCampingView.vue'
+import LoginView from '../views/LoginView.vue' 
 
 const routes = [
   {
@@ -19,6 +22,21 @@ const routes = [
     path: '/camping:id',
     name: 'campingView',
     component: CampingView
+  },
+  {
+    path: '/profile:id',
+    name: 'utilisateurView',
+    component: UtilisateurView
+  },
+  {
+    path: '/newCamping',
+    name: 'newCamping',
+    component: CreateCampingView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
   },
   {
     path: '/about',

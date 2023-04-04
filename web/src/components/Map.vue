@@ -1,6 +1,6 @@
 <template>
     <div style="height:300px; width:400px">
-        <l-map ref="map" :zoom="zoom" :center="center">
+        <l-map ref="map" :zoom="zoom" :center="pos1">
             <l-tile-layer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             layer-type="base"

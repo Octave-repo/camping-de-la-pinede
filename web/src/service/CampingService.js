@@ -8,6 +8,9 @@ class CampingService{
     getCamping(id){
         return CampingApi.getCamping(id);
     }
+    postCamping(content){
+        return CampingApi.postCamping(content);
+    }
 }
 
 export default new CampingService();

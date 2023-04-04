@@ -40,10 +40,12 @@ export default {
     return {
       camping: {},
       position: []
+
     }
   },
   beforeMount(){
-    this.getCamping(1);
+    this.id = this.$route.params.id;
+    this.getCamping(this.id);
   },
   methods: {
     async getCamping(id){
