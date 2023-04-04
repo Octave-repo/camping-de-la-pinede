@@ -19,7 +19,7 @@ public
 class GPSLocation{
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
     private String nom;
     private double longitude;
     private double latitude;
