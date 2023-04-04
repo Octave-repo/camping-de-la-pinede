@@ -2,6 +2,7 @@ package fr.utilisateur.controller;
 
 import fr.utilisateur.controller.common.HttpErreurFonctionnelle;
 import fr.utilisateur.services.dto.GetUtilisateurResponse;
+import fr.utilisateur.services.dto.PutUtilisateurRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ import fr.utilisateur.services.dto.PostUtilisateurResponse;
 import java.util.List;
 
 @RestController
-@RequestMapping("utilisateur")
+@RequestMapping
 public class UtilisateurController {
     @Autowired
     private UtilisateurService utilisateurService;
@@ -40,7 +41,7 @@ public class UtilisateurController {
     private ResponseEntity getUtilisateur(@RequestParam("id") long id){
         try{
             GetUtilisateurResponse response = this.utilisateurService.getUtilisateur(id);
-            if (response==null)
+            if (response!=null)
                 return ResponseEntity.ok().body(response);
             else
                 return ResponseEntity.noContent().build();
@@ -48,4 +49,25 @@ public class UtilisateurController {
             return ResponseEntity.internalServerError().body("Une erreur interne a été rencontrée");
         }
     }
+
+    @PutMapping
+    private ResponseEntity uptdateUtilisateur(@RequestBody PutUtilisateurRequest putUtilisateurRequest){
+        //On vérifie que les données en entrées sont correctes
+        if (putUtilisateurRequest == null || putUtilisateurRequest.getNom() == null ||
+                putUtilisateurRequest.getPrenom() == null || putUtilisateurRequest.getTelephone() == null
+                || putUtilisateurRequest.getMail() ==null ||
+                putUtilisateurRequest.getAdresse() == null){
+            return ResponseEntity.badRequest().body(
+                    new HttpErreurFonctionnelle("Les donnnées en entrée du service sont non renseignes ou incorrectes"));
+        }
+        else{
+            try{
+                PostUtilisateurResponse response = this.utilisateurService.updateUtilisateur(putUtilisateurRequest);
+                return ResponseEntity.ok().body(response);
+            } catch (Exception e){
+                return ResponseEntity.internalServerError().body("Une erreur interne a été rencontrée");
+            }
+        }
+    }
+
 }

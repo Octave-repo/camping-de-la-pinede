@@ -76,6 +76,7 @@ export default {
 </script>
 <style scoped>
 .campingObject:hover{
+    cursor: pointer;
     background-color: lightgray;
 }
 table {

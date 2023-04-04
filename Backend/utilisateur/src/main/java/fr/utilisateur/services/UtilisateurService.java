@@ -51,7 +51,7 @@ public class UtilisateurService {
                 .adresse(utilisateur.getAdresse())
                 .build();
     }
-    public PostUtilisateurResponse updateutilisateur(PutUtilisateurRequest utilisateurRequest){
+    public PostUtilisateurResponse updateUtilisateur(PutUtilisateurRequest utilisateurRequest){
         Utilisateur utilisateur = this.utilisateurRepository.findUtilisateurById(utilisateurRequest.getId());
         if (utilisateur == null){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found");
@@ -64,5 +64,6 @@ public class UtilisateurService {
         this.utilisateurRepository.save(utilisateur);
         return buildCreateUtilisateurResponse(utilisateur);
     }
+
 
 }
