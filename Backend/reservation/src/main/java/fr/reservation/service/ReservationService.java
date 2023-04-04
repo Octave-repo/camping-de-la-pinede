@@ -42,12 +42,11 @@ public class ReservationService {
     }
 
     public CampingNomResponse getNomCamping(long id){
-       return webClient.baseUrl("http://utilisateur/")
+       return webClient.baseUrl("http://camping/")
                 .build()
                 .get()
                 .uri(uriBuilder -> uriBuilder
-                        .path("/utilisateur/")
-                        .queryParam("id")
+                        .path("/camping/"+id)
                         .build())
                 .retrieve()
                 .bodyToMono(CampingNomResponse.class)
@@ -70,12 +69,12 @@ public class ReservationService {
     }
 
     public UtilisateurNomResponse getNomUtilisateur(long id){
-        return webClient.baseUrl("http://utlisateur/")
+        return webClient.baseUrl("http://utilisateur/")
                 .build()
                 .get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/utilisateur/")
-                        .queryParam("id")
+                        .queryParam("id",id)
                         .build())
                 .retrieve()
                 .bodyToMono(UtilisateurNomResponse.class)

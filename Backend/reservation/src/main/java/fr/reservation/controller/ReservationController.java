@@ -39,7 +39,7 @@ public class ReservationController {
     private ResponseEntity getReservationUtilisateur(@RequestParam("id") long id){
         try{
             List<GetReservationResponse> response = this.reservationService.getReservationUtilisateur(id);
-            if (response==null)
+            if (response!=null)
                 return ResponseEntity.ok().body(response);
             else
                 return ResponseEntity.noContent().build();
@@ -51,7 +51,7 @@ public class ReservationController {
     private ResponseEntity GetReservationCampingResponse(@RequestParam("id") long id){
         try{
             List<GetReservationCampingResponse> response = this.reservationService.getReservationByCamping(id);
-            if (response==null)
+            if (response!=null)
                 return ResponseEntity.ok().body(response);
             else
                 return ResponseEntity.noContent().build();

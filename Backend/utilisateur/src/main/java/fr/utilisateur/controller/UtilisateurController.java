@@ -50,6 +50,19 @@ public class UtilisateurController {
         }
     }
 
+    @GetMapping("mail")
+    private ResponseEntity getUtilisateur(@RequestParam("mail") String mail){
+        try{
+            GetUtilisateurResponse response = this.utilisateurService.getUtilisateurByMail(mail);
+            if (response!=null)
+                return ResponseEntity.ok().body(response);
+            else
+                return ResponseEntity.noContent().build();
+        } catch (Exception e){
+            return ResponseEntity.internalServerError().body("Une erreur interne a été rencontrée");
+        }
+    }
+
     @PutMapping
     private ResponseEntity uptdateUtilisateur(@RequestBody PutUtilisateurRequest putUtilisateurRequest){
         //On vérifie que les données en entrées sont correctes

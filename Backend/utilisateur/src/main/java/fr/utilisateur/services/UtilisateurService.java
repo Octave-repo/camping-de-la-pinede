@@ -51,6 +51,21 @@ public class UtilisateurService {
                 .adresse(utilisateur.getAdresse())
                 .build();
     }
+
+    public GetUtilisateurResponse getUtilisateurByMail (String mail){
+        Utilisateur utilisateur = this.utilisateurRepository.findUtilisateurByMail(mail);
+        if (utilisateur== null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Compte not found");
+        }
+        return GetUtilisateurResponse.builder()
+                .id(utilisateur.getId())
+                .nom(utilisateur.getNom())
+                .prenom(utilisateur.getPrenom())
+                .telephone(utilisateur.getTelephone())
+                .mail(utilisateur.getMail())
+                .adresse(utilisateur.getAdresse())
+                .build();
+    }
     public PostUtilisateurResponse updateUtilisateur(PutUtilisateurRequest utilisateurRequest){
         Utilisateur utilisateur = this.utilisateurRepository.findUtilisateurById(utilisateurRequest.getId());
         if (utilisateur == null){
