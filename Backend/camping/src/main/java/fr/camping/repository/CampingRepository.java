@@ -9,4 +9,7 @@ import java.util.List;
 @Repository
 public interface CampingRepository extends JpaRepository<Camping, Integer> {
     Camping findCampingById(long id);
+
+    @Override
+    List<Camping> findAll();
 }

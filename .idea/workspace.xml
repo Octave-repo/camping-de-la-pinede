@@ -9,6 +9,11 @@
       <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/controller/CampingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/controller/CampingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/repository/CampingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/repository/CampingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/repository/ListeCampingRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/getListeCampingResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/GetListeCampingResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

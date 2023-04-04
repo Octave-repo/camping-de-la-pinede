@@ -57,7 +57,7 @@ public class CampingService {
 
     public GetCampingResponse getCamping (long id){
         Camping camping = this.campingRepository.findCampingById(id);
-        if (camping!= null) {
+        if (camping == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Compte not found");
         }
         return GetCampingResponse.builder()
@@ -119,9 +119,19 @@ public class CampingService {
                 .contenu(avisSave.getContenu())
                 .build();
     }
-/*
-    public List<GetListeCampingResponse> getListeCamping (@RequestParam ("id") long id){
-        return this.listCampingRepository
 
-    }*/
+    public List<GetListeCampingResponse> getListeCamping (@RequestParam ("id") long id){
+        return this.campingRepository.findAll()
+                .stream()
+                .map(c-> GetListeCampingResponse.builder()
+                        .id(c.getId())
+                        .nom(c.getNom())
+                        .prix(c.getPrix())
+                        .emplacementLibres(c.getEmplacementLibres())
+                        .note(c.getNote())
+                        .nombreEtoiles(c.getNombreEtoiles())
+                        .adresse(c.getAdresse())
+                        .build())
+                .collect(Collectors.toList());
+    }
 }

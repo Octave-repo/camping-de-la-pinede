@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.PathParam;
 import java.util.List;
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
@@ -54,8 +55,8 @@ public class CampingController {
         }
     }
 
-    @GetMapping
-    private ResponseEntity getCamping(@RequestParam("id") long id){
+    @GetMapping("/{id}")
+    private ResponseEntity getCamping(@PathVariable Long id) {
         try{
             GetCampingResponse response = this.campingServiceService.getCamping(id);
             if (response!=null)
