@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="21">
-      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Avis.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/repository/AvisRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/GetCampingAvisResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_14_52__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_14_52__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_16_10__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_16_10__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_16_10__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_04_2023_16_10__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/controller/campingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/controller/campingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Camping.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/Camping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/TypeLogements.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/TypeLogements.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/PutCampingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/PutCampingRequest.java" afterDir="false" />
     </list>
@@ -33,6 +31,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Backend/serveur-camping" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -48,7 +47,7 @@
       <workItem from="1680331782697" duration="105000" />
       <workItem from="1680331897008" duration="2529000" />
       <workItem from="1680505884359" duration="1744000" />
-      <workItem from="1680529532278" duration="2257000" />
+      <workItem from="1680529532278" duration="2923000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1680341972978</created>

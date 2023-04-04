@@ -51,6 +51,7 @@ public class campingController {
     }
 
     @GetMapping
+    @RequestMapping("/avis")
     private ResponseEntity getCampingAvis(@RequestParam("id") long id){
         try{
             List<GetCampingAvisResponse> response = this.campingServiceService.getCampingAvis(id);
@@ -64,7 +65,7 @@ public class campingController {
     }
 
     @PutMapping
-    private ResponseEntity createcamping(@RequestBody PutCampingRequest putCampingRequest){
+    private ResponseEntity updatecamping(@RequestBody PutCampingRequest putCampingRequest){
         //On vérifie que les données en entrées sont correctes
         if (putCampingRequest == null || putCampingRequest.getNom() == null ||
                 putCampingRequest.getPrix() < 0 || putCampingRequest.getEmplacementLibres() < 0

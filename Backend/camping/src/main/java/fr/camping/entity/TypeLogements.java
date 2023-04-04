@@ -1,7 +1,7 @@
 package fr.camping.entity;
 
 public enum TypeLogements {
-    MOBILOME,
+    MOBILE_HOME,
     TENTE,
     CAMPINGCAR
 }
