@@ -11,11 +11,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping
-public class campingController {
+public class CampingController {
     @Autowired
     private CampingService campingServiceService;
 
-    @PostMapping
+    @PostMapping("/avis")
     private ResponseEntity createcamping(@RequestBody PostCampingRequest postCampingRequest){
         //On vérifie que les données en entrées sont correctes
         if (postCampingRequest == null || postCampingRequest.getNom() == null ||
@@ -37,6 +37,23 @@ public class campingController {
         }
     }
 
+    @PostMapping("/avis")
+    private ResponseEntity createcampingvis(@RequestBody PostCampingAvisRequest postCampingAvisRequest){
+        if (postCampingAvisRequest == null ||postCampingAvisRequest.getTitre() == null ||
+        postCampingAvisRequest.getContenu() == null){
+            return ResponseEntity.badRequest().body(
+                    new HttpErreurFonctionnelle("Les donnnées en entrée du service sont non renseignes ou incorrectes"));
+        }
+        else{
+            try{
+                PostCampingAvisResponse response = this.campingServiceService.createCampingAvis(postCampingAvisRequest);
+                return ResponseEntity.ok().body(response);
+            }catch (Exception e){
+                return ResponseEntity.internalServerError().body("Une erreur interne a été rencontrée");
+            }
+        }
+    }
+
     @GetMapping
     private ResponseEntity getCamping(@RequestParam("id") long id){
         try{
@@ -50,8 +67,7 @@ public class campingController {
         }
     }
 
-    @GetMapping
-    @RequestMapping("/avis")
+    @GetMapping("/avis")
     private ResponseEntity getCampingAvis(@RequestParam("id") long id){
         try{
             List<GetCampingAvisResponse> response = this.campingServiceService.getCampingAvis(id);

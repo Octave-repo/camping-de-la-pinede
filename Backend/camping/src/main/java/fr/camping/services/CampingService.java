@@ -40,9 +40,6 @@ public class CampingService {
     }
 
     public PostCampingResponse buildCreateCampingReponse(Camping campingSave){
-
-
-
         return PostCampingResponse.builder()
                 .id(campingSave.getId())
                 .nom(campingSave.getNom())
@@ -101,5 +98,25 @@ public class CampingService {
                         .contenu(c.getContenu())
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    public PostCampingAvisResponse createCampingAvis(PostCampingAvisRequest postCampingAvisRequest) {
+        Avis avisSave = this.avisRepository.save(Avis.builder()
+                        .camping(postCampingAvisRequest.getCamping())
+                        .utilisateur(postCampingAvisRequest.getUtilisateur())
+                        .titre(postCampingAvisRequest.getTitre())
+                        .contenu(postCampingAvisRequest.getContenu())
+                        .build());
+        return buildCreateCampingAvisResponse(avisSave);
+    }
+
+    public PostCampingAvisResponse buildCreateCampingAvisResponse(Avis avisSave){
+        return PostCampingAvisResponse.builder()
+                .id(avisSave.getId())
+                .camping(avisSave.getCamping())
+                .utilisateur(avisSave.getUtilisateur())
+                .titre(avisSave.getTitre())
+                .contenu(avisSave.getContenu())
+                .build();
     }
 }
