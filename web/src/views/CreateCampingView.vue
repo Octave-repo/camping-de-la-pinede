@@ -65,6 +65,7 @@ export default{
     },
     methods: {
         async confirmer(){
+            this.camping.adresse = {};
             this.camping.typeLogements = this.checkedLogements;
             this.camping.equipement = this.checkedEquipement;
             console.log(this.camping);

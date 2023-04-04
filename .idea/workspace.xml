@@ -12,6 +12,7 @@
       <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/controller/CampingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/controller/CampingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/api/CampingApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/api/CampingApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/views/CreateCampingView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/views/CreateCampingView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +49,7 @@
       <workItem from="1680331782697" duration="105000" />
       <workItem from="1680331897008" duration="2529000" />
       <workItem from="1680505884359" duration="1744000" />
-      <workItem from="1680529532278" duration="3722000" />
+      <workItem from="1680529532278" duration="4220000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1680341972978</created>
