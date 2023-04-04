@@ -14,7 +14,7 @@ import java.util.List;
 public class Camping {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     private String nom;
 
@@ -28,11 +28,14 @@ public class Camping {
 
     private String adresseMail;
 
-    //@Enumerated (EnumType.STRING)
-    @ElementCollection
+    @ElementCollection(targetClass = Equipement.class)
+    @CollectionTable
+    @Enumerated(EnumType.STRING)
     private List<Equipement> equipement;
 
-    @ElementCollection
+    @ElementCollection(targetClass = TypeLogements.class)
+    @CollectionTable
+    @Enumerated(EnumType.STRING)
     private List<TypeLogements> typeLogements;
 
     private int nombreEtoiles;
