@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping
 public class CampingController {
@@ -16,6 +16,7 @@ public class CampingController {
     private CampingService campingServiceService;
 
     @PostMapping()
+    @CrossOrigin(origins = "http://localhost:8080")
     private ResponseEntity createcamping(@RequestBody PostCampingRequest postCampingRequest){
         //On vérifie que les données en entrées sont correctes
         if (postCampingRequest == null || postCampingRequest.getNom() == null ||
