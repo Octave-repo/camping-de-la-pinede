@@ -119,4 +119,9 @@ public class CampingService {
                 .contenu(avisSave.getContenu())
                 .build();
     }
+/*
+    public List<GetListeCampingResponse> getListeCamping (@RequestParam ("id") long id){
+        return this.listCampingRepository
+
+    }*/
 }

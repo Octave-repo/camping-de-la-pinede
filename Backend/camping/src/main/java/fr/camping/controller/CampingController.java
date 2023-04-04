@@ -15,7 +15,7 @@ public class CampingController {
     @Autowired
     private CampingService campingServiceService;
 
-    @PostMapping("/avis")
+    @PostMapping()
     private ResponseEntity createcamping(@RequestBody PostCampingRequest postCampingRequest){
         //On vérifie que les données en entrées sont correctes
         if (postCampingRequest == null || postCampingRequest.getNom() == null ||
@@ -38,7 +38,7 @@ public class CampingController {
     }
 
     @PostMapping("/avis")
-    private ResponseEntity createcampingvis(@RequestBody PostCampingAvisRequest postCampingAvisRequest){
+    private ResponseEntity createcampingavis(@RequestBody PostCampingAvisRequest postCampingAvisRequest){
         if (postCampingAvisRequest == null ||postCampingAvisRequest.getTitre() == null ||
         postCampingAvisRequest.getContenu() == null){
             return ResponseEntity.badRequest().body(
