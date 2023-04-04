@@ -37,6 +37,6 @@ public class Camping {
 
     private int nombreEtoiles;
 
-    @OneToOne
+    @OneToOne (cascade = {CascadeType.ALL})
     private GPSLocation adresse;
 }

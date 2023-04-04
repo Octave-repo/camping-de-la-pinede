@@ -1,23 +1,27 @@
 package fr.camping.services;
 
+import fr.camping.entity.Avis;
 import fr.camping.entity.Camping;
+import fr.camping.repository.AvisRepository;
 import fr.camping.repository.CampingRepository;
-import fr.camping.services.dto.GetCampingResponse;
-import fr.camping.services.dto.PostCampingRequest;
-import fr.camping.services.dto.PostCampingResponse;
-import fr.camping.services.dto.PutCampingRequest;
+import fr.camping.services.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CampingService {
 
     @Autowired
     private CampingRepository campingRepository;
+    @Autowired
+    private AvisRepository avisRepository;
 
     public PostCampingResponse createCamping(PostCampingRequest postCampingRequest){
         Camping campingSave = this.campingRepository.save(Camping.builder()
@@ -53,7 +57,7 @@ public class CampingService {
 
     public GetCampingResponse getCamping (long id){
         Camping camping = this.campingRepository.findCampingById(id);
-        if (camping== null) {
+        if (camping!= null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Compte not found");
         }
         return GetCampingResponse.builder()
@@ -82,5 +86,17 @@ public class CampingService {
         camping.setAdresse(campingRequest.getAdresse());
         this.campingRepository.save(camping);
         return buildCreateCampingReponse(camping);
+    }
+    public List<GetCampingAvisResponse> getCampingAvis (@RequestParam("id") long id){
+        return this.avisRepository.findByCamping(id)
+                .stream()
+                .map(c-> GetCampingAvisResponse.builder()
+                        .id(c.getId())
+                        .utilisateur(c.getUtilisateur())
+                        .camping(c.getCamping())
+                        .titre(c.getTitre())
+                        .contenu(c.getContenu())
+                        .build())
+                .collect(Collectors.toList());
     }
 }

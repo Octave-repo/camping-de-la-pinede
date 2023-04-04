@@ -2,14 +2,15 @@ package fr.camping.controller;
 
 import fr.camping.controller.common.HttpErreurFonctionnelle;
 import fr.camping.services.CampingService;
-import fr.camping.services.dto.GetCampingResponse;
-import fr.camping.services.dto.PostCampingRequest;
-import fr.camping.services.dto.PostCampingResponse;
-import fr.camping.services.dto.PutCampingRequest;
+import fr.camping.services.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@RestController
+@RequestMapping
 public class campingController {
     @Autowired
     private CampingService campingServiceService;
@@ -40,12 +41,25 @@ public class campingController {
     private ResponseEntity getCamping(@RequestParam("id") long id){
         try{
             GetCampingResponse response = this.campingServiceService.getCamping(id);
-            if (response==null)
+            if (response!=null)
                 return ResponseEntity.ok().body(response);
             else
                 return ResponseEntity.noContent().build();
         } catch (Exception e){
             return ResponseEntity.internalServerError().body("Une erreur interne a été rencontrée");
+        }
+    }
+
+    @GetMapping
+    private ResponseEntity getCampingAvis(@RequestParam("id") long id){
+        try{
+            List<GetCampingAvisResponse> response = this.campingServiceService.getCampingAvis(id);
+            if (response!=null)
+                return ResponseEntity.ok().body(response);
+            else
+                return ResponseEntity.noContent().build();
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().body("Une errreur interne a été rencontrée");
         }
     }
 

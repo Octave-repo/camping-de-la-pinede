@@ -22,4 +22,18 @@ public class PutCampingRequest {
     private List<TypeLogements> typeLogements;
     private int nombreEtoiles;
     private GPSLocation adresse;
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class GetCampingAvisResponse {
+
+        private long id;
+        private long utilisateur;
+        private long camping;
+        private String titre;
+        private String contenu;
+    }
 }
