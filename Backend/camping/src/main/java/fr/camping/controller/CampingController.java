@@ -1,7 +1,7 @@
 package fr.camping.controller;
 
 import fr.camping.controller.common.HttpErreurFonctionnelle;
-import fr.camping.services.CampingService;
+import fr.camping.services.*;
 import fr.camping.services.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +22,7 @@ public class CampingController {
                 postCampingRequest.getPrix() < 0 || postCampingRequest.getEmplacementLibres() < 0
                 || postCampingRequest.getNote() < 0 || postCampingRequest.getNumeroTelephone() == null
                 || postCampingRequest.getAdresseMail() == null || postCampingRequest.getEquipement() == null
-                || postCampingRequest.getTypeLogements() == null || postCampingRequest.getNombreEtoiles() < 0
-                || postCampingRequest.getAdresse() == null){
+                || postCampingRequest.getTypeLogements() == null || postCampingRequest.getNombreEtoiles() < 0){
             return ResponseEntity.badRequest().body(
                     new HttpErreurFonctionnelle("Les donnnées en entrée du service sont non renseignes ou incorrectes"));
         }

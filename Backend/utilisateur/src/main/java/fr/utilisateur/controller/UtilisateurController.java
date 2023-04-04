@@ -15,8 +15,8 @@ import java.util.List;
 @RestController
 @RequestMapping
 public class UtilisateurController {
-    @Autowired
-    private UtilisateurService utilisateurService;
+        @Autowired
+        private UtilisateurService utilisateurService;
 
     @PostMapping
     private ResponseEntity createUtilisateur(@RequestBody PostUtilisateurRequest postUtilisateurRequest){

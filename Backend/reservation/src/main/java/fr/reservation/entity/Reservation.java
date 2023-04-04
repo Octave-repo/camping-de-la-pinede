@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
