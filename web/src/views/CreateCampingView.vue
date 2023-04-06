@@ -73,7 +73,9 @@ export default{
                 this.camping.adresse.nom = "Valenciennes";
                 this.camping.adresse.latitude = 50.3333;
                 this.camping.adresse.longitude = 4.4555;
-                await CampingService.postCamping(this.camping);
+                let response = await CampingService.postCamping(this.camping);
+                console.log(response.data);
+                alert(response.data.id);
                 this.$router.push('/');
             } catch (error){
                 console.log(error);
