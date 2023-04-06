@@ -4,7 +4,7 @@
     <label>Code Postal</label>
     <input type="number" v-model="postalCode">
     <button @click="fetchCity">Ok</button>
-    <Map :pos1="posistion"></Map>
+    <Map :pos1="position"></Map>
 </template>
 <script>
 import VilleService from '@/service/VilleService'
@@ -19,7 +19,7 @@ export default{
             adresse: "",
             postalCode: 0,
             city: {},
-            posistion: [0,0]
+            position: [0,0]
         }
     },
     methods:{
@@ -29,10 +29,16 @@ export default{
                 this.city = response.data.features[0];
                 this.postalCode = this.city.properties.postcode;
                 this.adresse = this.city.properties.label;
-                this.posistion = [this.city.geometry.coordinates[1], this.city.geometry.coordinates[0]]; 
+                this.position = [this.city.geometry.coordinates[1], this.city.geometry.coordinates[0]];
+                this.emitAll();
             } catch(error){
                 console.log(error);
             }
+        },
+        emitAll(){
+            this.$emit('adresse', adresse);
+            this.$emit('latitude', position[0]);
+            this.$emit('longitude', position[1]);
         }
     }
 }
