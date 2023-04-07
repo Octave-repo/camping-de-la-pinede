@@ -15,6 +15,11 @@ import VilleService from '@/service/VilleService'
 import Map from '@/components/Map.vue';
 export default{
     name: 'CityPicker',
+    emits:[
+        "adresse",
+        "longitude",
+        "latitude"
+    ],
     components:{
         Map
     },
