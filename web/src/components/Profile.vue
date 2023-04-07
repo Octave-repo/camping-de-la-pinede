@@ -1,57 +1,70 @@
 <template>
-    <div v-if="isLoading">Loading ...</div>
-    <div v-else class="profile-section">
-      <div v-if="isAuthenticated" class="profile-section">  
-        <div class="nickname">  
-          <p @click="logout" class="wrapper-log"><font-awesome-icon icon="right-from-bracket" class="profile-section" />Déconnexion&nbsp;</p>
-          <div class="wrapper-profile nickname">
-            <p>&nbsp;{{ user.nickname }}&nbsp;&nbsp;</p>  
-            <img :src="user.picture" class="profile-picture">
-          </div>
-          <h1 v-if="isAdmin()">JE SUIS ADMIN</h1>
+  <div v-if="isLoading">Loading ...</div>
+  <div v-else class="profile-section">
+    <div v-if="isAuthenticated" class="profile-section">  
+      <div class="nickname">  
+        <p @click="logout" class="wrapper-log"><font-awesome-icon icon="right-from-bracket" class="profile-section" />Déconnexion&nbsp;</p>
+        <div class="wrapper-profile nickname">
+          <p>&nbsp;{{ user.nickname }}&nbsp;&nbsp;</p>  
+          <img :src="user.picture" class="profile-picture">
         </div>
       </div>
-      <p v-else @click="login" class="wrapper-log"><font-awesome-icon icon="right-to-bracket" class="profile-section" />Connexion</p> 
     </div>
-  </template>
-  <script>
+    <p v-else @click="login" class="wrapper-log"><font-awesome-icon icon="right-to-bracket" class="profile-section" />Connexion</p> 
+  </div>
+</template>
+<script>
     // Composition API
-    import { useAuth0 } from '@auth0/auth0-vue';
-  
-    export default {
-      data(){
-        return{
-          auth0: useAuth0(),
-        }
-      },
-      setup() {
-        const auth0 = useAuth0();
-        return {
-          user: auth0.user,
-          isAuthenticated: auth0.isAuthenticated,
-          isLoading: auth0.isLoading,
-          logout() {
-            auth0.logout({ 
-            logoutParams: { 
-            returnTo: window.location.origin }
-            })}
-        };
-      },
-      beforeMount(){
-        console.log(this.user);
-      },
-      methods:{
-        async login(){
-            await this.auth0.loginWithPopup();
+import UtilisateurService from '@/service/UtilisateurService';
+import { useAuth0 } from '@auth0/auth0-vue';
+
+export default {
+  data(){
+    return{
+      auth0: useAuth0(),
+    }
+  },
+  setup() {
+    const auth0 = useAuth0();
+    return {
+      user: auth0.user,
+      isAuthenticated: auth0.isAuthenticated,
+      isLoading: auth0.isLoading,
+      logout() {
+        auth0.logout({ 
+        logoutParams: { 
+        returnTo: window.location.origin }
+        })}
+    };
+  },
+  methods:{
+    async login(){
+        await this.auth0.loginWithPopup();
+        try {
+          let isUser = await this.isAlreadyUser();
+          if (!isUser){
             this.$router.push('signup');
-        },
-        isAdmin() {
-            console.log(this.user);
-            //return this.$auth0.isUserRole("Admin");
+          }
+        } catch (error){
+          console.log(error);
+        }
+    },
+    async isAlreadyUser(){
+      try{
+        await UtilisateurService.getUtilisateurByMail(this.auth0.user.email);
+        return true;
+      } catch (error)
+      {
+        if (error.request && error.request.status === 404){
+          return false;
+        } else{
+          throw error;
         }
       }
-    };
-  </script>
+    }
+  }
+};
+</script>
 <style scoped>
  .profile-picture{
   width: 30px;
