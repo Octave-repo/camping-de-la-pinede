@@ -24,7 +24,7 @@ const routes = [
     component: CampingView
   },
   {
-    path: '/profile:id',
+    path: '/profile',
     name: 'utilisateurView',
     component: UtilisateurView
   },

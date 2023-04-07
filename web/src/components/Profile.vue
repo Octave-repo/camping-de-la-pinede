@@ -4,7 +4,7 @@
     <div v-if="isAuthenticated" class="profile-section">  
       <div class="nickname">  
         <p @click="logout" class="wrapper-log"><font-awesome-icon icon="right-from-bracket" class="profile-section" />Déconnexion&nbsp;</p>
-        <div class="wrapper-profile nickname">
+        <div class="wrapper-profile nickname" @click="goToProfile">
           <p>&nbsp;{{ user.nickname }}&nbsp;&nbsp;</p>  
           <img :src="user.picture" class="profile-picture">
         </div>
@@ -38,6 +38,9 @@ export default {
     };
   },
   methods:{
+    goToProfile(){
+      this.$router.push('profile');
+    },
     async login(){
         await this.auth0.loginWithPopup();
         try {
