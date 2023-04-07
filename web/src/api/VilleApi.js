@@ -11,7 +11,7 @@ class VilleApi{
             params:{
                 q: adresse,
                 postcode: codePostal,
-                limit: 1
+                limit: 10
             }
         });
     }
