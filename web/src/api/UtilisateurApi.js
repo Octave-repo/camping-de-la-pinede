@@ -12,6 +12,9 @@ class UtilisateurApi{
     getUtilisateurByMail(mail){
         return InstanceAxios.get(`${path}/utilisateur/mail/?mail=${mail}`);
     }
+    postUtilisateur(utilisateur){
+        return InstanceAxios.post(`${path}/utilisateur/`, utilisateur);
+    }
 }
 
 export default new UtilisateurApi();

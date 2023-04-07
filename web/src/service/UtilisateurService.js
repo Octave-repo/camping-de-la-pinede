@@ -8,6 +8,9 @@ class UtilisateurService{
     getUtilisateurByMail(mail){
         return UtilisateurApi.getUtilisateurByMail(mail);
     }
+    postUtilisateur(utilisateur){
+        return UtilisateurApi.postUtilisateur(utilisateur);
+    }
 }
 
 export default new UtilisateurService();
