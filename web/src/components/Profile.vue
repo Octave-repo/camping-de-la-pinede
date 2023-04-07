@@ -19,11 +19,14 @@
     import { useAuth0 } from '@auth0/auth0-vue';
   
     export default {
+      data(){
+        return{
+          auth0: useAuth0(),
+        }
+      },
       setup() {
         const auth0 = useAuth0();
-          
         return {
-          login: () => auth0.loginWithRedirect() ,
           user: auth0.user,
           isAuthenticated: auth0.isAuthenticated,
           isLoading: auth0.isLoading,
@@ -38,6 +41,10 @@
         console.log(this.user);
       },
       methods:{
+        async login(){
+            await this.auth0.loginWithPopup();
+            this.$router.push('signup');
+        },
         isAdmin() {
             console.log(this.user);
             //return this.$auth0.isUserRole("Admin");
