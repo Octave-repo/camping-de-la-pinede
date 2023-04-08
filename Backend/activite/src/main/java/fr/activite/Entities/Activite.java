@@ -3,10 +3,7 @@ package fr.activite.Entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 
 @Getter
@@ -23,6 +20,6 @@ public class Activite {
     private String logo;
     private String lien;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private GPSLocation adresse;
 }
