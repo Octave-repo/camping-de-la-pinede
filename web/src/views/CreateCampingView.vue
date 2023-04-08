@@ -46,7 +46,10 @@
         <button @click="confirmer">Confirmer</button>
     </div>
     <h1>Adresse:</h1>
-    <CityPicker></CityPicker>
+    <CityPicker
+        @adresse="(n)=>this.camping.adresse.nom=n"
+        @latitude="(n)=>this.camping.adresse.latitude=n"
+        @longitude="(n)=>this.camping.adresse.longitude=n"/>
 </template>
 <script>
 import CityPicker from '@/components/CityPicker.vue';
@@ -60,20 +63,24 @@ export default{
         return {
             camping: {},
             checkedLogements:[],
-            checkedEquipement:[]
+            checkedEquipement:[],
         }
+    },
+    beforeMount(){
+        this.camping.adresse = {};
     },
     methods: {
         async confirmer(){
-            this.camping.adresse = {};
             this.camping.typeLogements = this.checkedLogements;
             this.camping.equipement = this.checkedEquipement;
             console.log(this.camping);
             try{
-                this.camping.adresse.nom = "Valenciennes";
+                /*this.camping.adresse.nom = "Valenciennes";
                 this.camping.adresse.latitude = 50.3333;
-                this.camping.adresse.longitude = 4.4555;
-                await CampingService.postCamping(this.camping);
+                this.camping.adresse.longitude = 4.4555;*/
+                let response = await CampingService.postCamping(this.camping);
+                console.log(response.data);
+                alert(response.data.id);
                 this.$router.push('/');
             } catch (error){
                 console.log(error);

@@ -4,8 +4,10 @@ import fr.camping.controller.common.HttpErreurFonctionnelle;
 import fr.camping.services.*;
 import fr.camping.services.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.ws.rs.PathParam;
 import java.util.List;
@@ -49,7 +51,13 @@ public class CampingController {
             try{
                 PostCampingAvisResponse response = this.campingServiceService.createCampingAvis(postCampingAvisRequest);
                 return ResponseEntity.ok().body(response);
-            }catch (Exception e){
+            }catch (ResponseStatusException e){
+                if (e.getStatus().equals(HttpStatus.NOT_FOUND)){
+                    return ResponseEntity.notFound().build();
+                }
+                return ResponseEntity.internalServerError().body("Une erreur interne a été rencontrée");
+            }
+            catch (Exception e){
                 return ResponseEntity.internalServerError().body("Une erreur interne a été rencontrée");
             }
         }
@@ -72,6 +80,19 @@ public class CampingController {
     private ResponseEntity getCampingAvis(@RequestParam("id") long id){
         try{
             List<GetCampingAvisResponse> response = this.campingServiceService.getCampingAvis(id);
+            if (response!=null)
+                return ResponseEntity.ok().body(response);
+            else
+                return ResponseEntity.noContent().build();
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().body("Une errreur interne a été rencontrée");
+        }
+    }
+
+    @GetMapping
+    private ResponseEntity getListeCaping(){
+        try{
+            List<GetListeCampingResponse> response = this.campingServiceService.getListeCamping();
             if (response!=null)
                 return ResponseEntity.ok().body(response);
             else

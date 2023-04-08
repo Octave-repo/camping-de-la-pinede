@@ -17,6 +17,8 @@ public class GetCampingResponse {
     private String nom;
     private double prix;
     private int emplacementLibres;
+    private String numeroTelephone;
+    private String adresseMail;
     private double note;
     private List<Equipement> equipement;
     private List<TypeLogements> typeLogements;

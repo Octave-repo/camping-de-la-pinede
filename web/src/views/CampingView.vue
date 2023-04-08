@@ -1,7 +1,7 @@
 <template>
     <h1>{{ camping.nom }}</h1>
     <div>
-      <font-awesome-icon icon="star" v-for="index in parseInt(camping.nombreEtoiles)" :key="index"></font-awesome-icon>
+      <font-awesome-icon icon="star" v-for="index in camping.nombreEtoiles" :key="index"></font-awesome-icon>
     </div>
     <h3>{{ camping.adresse.nom }}</h3>
     <div class="centered">
@@ -11,7 +11,7 @@
     <div class="centered">
       <p>Nos logements:</p>
       <ul>
-        <li v-for:="logement in camping.typesLogements" :key="logement">{{ logement }}</li>
+        <li v-for:="logement in camping.typeLogements" :key="logement">{{ logement }}</li>
       </ul>
     </div>
     <div class = centered>
@@ -40,7 +40,6 @@ export default {
     return {
       camping: {},
       position: []
-
     }
   },
   beforeMount(){

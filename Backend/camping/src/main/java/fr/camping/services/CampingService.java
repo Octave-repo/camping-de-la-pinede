@@ -8,6 +8,7 @@ import fr.camping.services.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -64,6 +65,8 @@ public class CampingService {
                 .nom(camping.getNom())
                 .prix(camping.getPrix())
                 .emplacementLibres(camping.getEmplacementLibres())
+                .numeroTelephone(camping.getNumeroTelephone())
+                .adresseMail(camping.getAdresseMail())
                 .note(camping.getNote())
                 .equipement(camping.getEquipement())
                 .typeLogements(camping.getTypeLogements())
@@ -119,7 +122,8 @@ public class CampingService {
                 .build();
     }
 
-    public List<GetListeCampingResponse> getListeCamping (@RequestParam ("id") long id){
+
+    public List<GetListeCampingResponse> getListeCamping (){
         return this.campingRepository.findAll()
                 .stream()
                 .map(c-> GetListeCampingResponse.builder()
