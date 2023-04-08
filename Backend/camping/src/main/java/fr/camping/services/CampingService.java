@@ -64,6 +64,8 @@ public class CampingService {
                 .nom(camping.getNom())
                 .prix(camping.getPrix())
                 .emplacementLibres(camping.getEmplacementLibres())
+                .numeroTelephone(camping.getNumeroTelephone())
+                .adresseMail(camping.getAdresseMail())
                 .note(camping.getNote())
                 .equipement(camping.getEquipement())
                 .typeLogements(camping.getTypeLogements())
