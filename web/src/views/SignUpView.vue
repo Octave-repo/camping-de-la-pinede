@@ -48,6 +48,7 @@ export default{
             try{
                 let response = await UtilisateurService.postUtilisateur(this.utilisateur);
                 console.log(response.data);
+                this.$router.push('profile');
             } catch (error){
                 alert('Erreur lors de la création de l\'utilisateur');
             }
