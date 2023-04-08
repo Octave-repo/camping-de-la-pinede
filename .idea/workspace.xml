@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51317265-bc53-4d5d-9a92-7b68cd0a878c" name="Changes" comment="projet">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_04_04_2023_13_57__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/entity/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/controller/CampingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/controller/CampingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/repository/CampingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/repository/CampingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/repository/ListeCampingRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/CampingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/getListeCampingResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/java/fr/camping/services/dto/GetListeCampingResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/camping/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/camping/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/assets/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/assets/logo.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +32,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\campingTP\camping-de-la-pinede\web\src\assets" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -51,6 +49,7 @@
       <workItem from="1680331897008" duration="2529000" />
       <workItem from="1680505884359" duration="1744000" />
       <workItem from="1680529532278" duration="6178000" />
+      <workItem from="1680938417289" duration="1876000" />
     </task>
     <task id="LOCAL-00001" summary="pom">
       <created>1680341972978</created>

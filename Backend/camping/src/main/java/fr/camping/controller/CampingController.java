@@ -89,6 +89,19 @@ public class CampingController {
         }
     }
 
+    @GetMapping
+    private ResponseEntity getListeCaping(){
+        try{
+            List<GetListeCampingResponse> response = this.campingServiceService.getListeCamping();
+            if (response!=null)
+                return ResponseEntity.ok().body(response);
+            else
+                return ResponseEntity.noContent().build();
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().body("Une errreur interne a été rencontrée");
+        }
+    }
+
     @PutMapping
     private ResponseEntity updatecamping(@RequestBody PutCampingRequest putCampingRequest){
         //On vérifie que les données en entrées sont correctes
