@@ -37,11 +37,17 @@ export default{
         }
     },
     beforeMount() {
-        this.utilisateur.adresse = {};
-        this.utilisateur.nom = this.user.family_name;
-        this.utilisateur.prenom = this.user.given_name;
-        this.utilisateur.mail = this.user.email;
-        console.log(this.user);
+        //On interdit la page de signup si l'utilisateur n'est pas connecté
+        //TODO Vérifier que l'utilisateur n'est pas déjà existant
+        if (!this.authenticated)
+            this.$router.push('/');
+        else{
+            this.utilisateur.adresse = {};
+            this.utilisateur.nom = this.user.family_name;
+            this.utilisateur.prenom = this.user.given_name;
+            this.utilisateur.mail = this.user.email;
+            console.log(this.user);
+        }
     },
     methods:{
         async confirm(){

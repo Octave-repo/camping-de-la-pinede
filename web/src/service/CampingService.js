@@ -11,6 +11,9 @@ class CampingService{
     postCamping(content){
         return CampingApi.postCamping(content);
     }
+    postAvis(content){
+        return CampingApi.postAvis(content);
+    }
 }
 
 export default new CampingService();

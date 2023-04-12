@@ -25,16 +25,22 @@
       <p><a :href="`mailto:${ camping.adresseMail }`">{{ camping.adresseMail }}</a></p>
       <a :href="`tel:${ camping.numeroTelephone }`">{{ camping.numeroTelephone }}</a>
     </div>
+    <Reservation/>
+    <Avis/>
 </template>
 
 <script>
 import Map from '@/components/Map.vue';
 import CampingService from '@/service/CampingService'
+import Reservation from '@/components/Reservation.vue';
+import Avis from '@/components/Avis.vue'
 
 export default {
   name: 'CampingSearchView',
   components: {
-    Map
+    Map,
+    Reservation,
+    Avis
   },
   data(){
     return {

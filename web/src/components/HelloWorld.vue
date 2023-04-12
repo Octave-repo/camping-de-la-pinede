@@ -28,18 +28,42 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
     <Map :pos1="[50.349998, 3.53333]" :pos2="[50.633333, 3.066667]" :zoom=9></Map>
+    <CarouselAvis :elements="tempData" />
+    <CarouselActivites :elements="tempDataImg"/>
+    <StarRate/>
   </div>
 </template>
 
 <script>
 import Map from '@/components/Map.vue';
+import CarouselAvis from '@/components/CarouselAvis.vue';
+import StarRate from  '@/components/StarRate.vue';
+import CarouselActivites from '@/components/CarouselActivites.vue'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
   components: {
-    Map
+    Map,
+    CarouselAvis,
+    StarRate,
+    CarouselActivites
+},
+data(){
+  return {
+    tempData:[{id:1, title:"C'est bien", text:"Lorem Ipsum Amogus"},
+      {id:2, title:"C'était très bien", text:"Lorem Ipsum Amogus"},
+      {id:3, title:"Blablabla", text:"Lorem Ipsum Amogus"},
+      {id:4, title:"fgzjfghejfz", text:"Lorem Ipsum Amogus"},
+      {id:5, title:"hkj", text:"Lorem Ipsum Amogus"}
+      ],
+      tempDataImg:[{id:1, link:"https://i.imgur.com/vm4iVX7.png"},
+      {id:2, link:"https://i.imgur.com/XlMlvtf.png"},
+      {id:3, link:"https://i.imgur.com/pBDveYw.png"},
+      {id:4, link:"https://i.imgur.com/SpGSGfz.png"}
+      ]
+  }
 }
 
 }
