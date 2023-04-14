@@ -53,6 +53,8 @@ export default{
         async confirm(){
             try{
                 let response = await UtilisateurService.postUtilisateur(this.utilisateur);
+                //On met l'utilisateur crée en tant qu'utilisateur actuel
+                UtilisateurService.setUtlisateurLocal(response.data);
                 console.log(response.data);
                 this.$router.push('profile');
             } catch (error){

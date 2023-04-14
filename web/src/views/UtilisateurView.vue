@@ -25,21 +25,24 @@ export default {
         this.utilisateur.adresse = {};
         if (this.auth0.isAuthenticated){
             this.getUtilisateur();
+            this.position = [this.utilisateur.adresse.latitude, this.utilisateur.adresse.longitude];
         } else {
             this.$router.push('/'); 
         }
     },
     methods:{
-        async getUtilisateur(){
-            try{
-                let response = await UtilisateurService.getUtilisateurByMail(this.auth0.user.email);
-                this.utilisateur = response.data;
-                this.position = [this.utilisateur.adresse.latitude, this.utilisateur.adresse.longitude];
-            } catch (error)
-            {
-                console.log(error);
-                this.$router.push('/');
+        getUtilisateur(){
+            /*Si l'utilisateur n'as pas de compte "camping"
+            On le renvoie sur la page d'inscription
+            On met ça dans une variable temporaire pour éviter les problèmes
+            De render du DOM*/
+            let tmp = UtilisateurService.getUtilisateurLocal();
+            if (tmp === null){
+                this.$router.push('signup');
+            } else{
+                this.utilisateur = tmp;
             }
+            console.log(this.utilisateur);
         }
     }
 }

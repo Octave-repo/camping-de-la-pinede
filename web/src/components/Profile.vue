@@ -34,7 +34,8 @@ export default {
         auth0.logout({ 
         logoutParams: { 
         returnTo: window.location.origin }
-        })}
+        });
+        UtilisateurService.resetUtlisateurLocal();}
     };
   },
   methods:{
@@ -54,7 +55,8 @@ export default {
     },
     async isAlreadyUser(){
       try{
-        await UtilisateurService.getUtilisateurByMail(this.auth0.user.email);
+        let response = await UtilisateurService.getUtilisateurByMail(this.auth0.user.email);
+        UtilisateurService.setUtlisateurLocal(response.data);
         return true;
       } catch (error)
       {
