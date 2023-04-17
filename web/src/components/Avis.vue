@@ -1,4 +1,5 @@
 <template>
+    <h1 class="title" style="background-color: RGB(255, 250, 250); padding: 10px;">Commentaire</h1>
     <p>Laissez nous un commentaire !</p>
     <div class="container">
         <input type="text"/>

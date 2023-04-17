@@ -7,8 +7,8 @@
             name="OpenStreetMap">
             </l-tile-layer>
             <l-marker :lat-lng="pos1" ></l-marker>
-            <l-marker v-if="pos2 !== undefined" :lat-lng="pos2"></l-marker>
-            <l-polyline v-if="pos2 !== undefined" :latLngs="
+            <l-marker v-if="displayDistance" :lat-lng="pos2"></l-marker>
+            <l-polyline v-if="displayDistance" :latLngs="
                 [pos1,
                 pos2]" color=green></l-polyline>
         </l-map>
@@ -40,11 +40,13 @@ export default {
     },
     data() {
       return {
-        center: []
+        center: [],
+        displayDistance: false
       };
     },
     beforeMount(){
-        if (this.pos2 !== undefined){
+        if (this.pos2 !== undefined && this.pos2 !== null){
+            this.displayDistance = true;
             this.center = GPSService.findMiddle(this.pos1, this.pos2);
             console.log(this.center);
         }

@@ -4,15 +4,19 @@
     <p>{{ utilisateur.telephone }}</p>
     <p>{{ utilisateur.adresse.nom }}</p>
     <Map :pos1="position"></Map>
+    <ListeReservations/>
 </template>
 <script>
 import UtilisateurService from '@/service/UtilisateurService';
 import { useAuth0 } from '@auth0/auth0-vue';
 import Map from '@/components/Map.vue';
+import ListeReservations from '@/components/ListeReservations.vue';
+
 export default {
     name: 'UtilisateurView',
     components:{
-        Map
+        Map,
+        ListeReservations
     },
     data(){
         return{
