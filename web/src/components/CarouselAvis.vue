@@ -1,11 +1,13 @@
 <template>
-    <Carousel :items-to-show="3"
+    <Carousel
+        v-if="elements.length" 
+        :items-to-show="3"
         :autoplay="2000"
         :wrap-around="true" class="carousel">
         <Slide v-for="element in elements" :key="element.id">
             <div class="carousel-content">
-                <h1>{{ element.title }}</h1>
-                <p>{{ element.text }}</p>
+                <h1>{{ element.titre }}</h1>
+                <p>{{ element.contenu }}</p>
             </div>
         </Slide>
         <template #addons>

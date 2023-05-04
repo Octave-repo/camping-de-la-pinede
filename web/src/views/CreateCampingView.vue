@@ -80,8 +80,7 @@ export default{
                 this.camping.adresse.longitude = 4.4555;*/
                 let response = await CampingService.postCamping(this.camping);
                 console.log(response.data);
-                alert(response.data.id);
-                this.$router.push('/');
+                this.$router.push('campings');
             } catch (error){
                 console.log(error);
                 alert("Une erreur lors de la création d'un camping");

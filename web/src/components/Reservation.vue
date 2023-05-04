@@ -16,7 +16,6 @@
     </div>    
 </template>
 <script>
-
 import ReservationService from '@/service/ReservationService';
 import UtilisateurService from '@/service/UtilisateurService';
 import VueDatePicker from '@vuepic/vue-datepicker';
@@ -64,11 +63,13 @@ export default{
             else {
                 this.reservation.idCamping = this.campingId;
                 this.reservation.idUtilisateur = utilisateur.id;
-                this.reservation.dateDebut = this.date[0];
-                this.reservation.dateFin = this.date[1];
+                this.reservation.dateDebut = this.date[0].getTime();
+                this.reservation.dateFin = this.date[1].getTime();
+                this.reservation.nombrePersonne = this.nbReservation;
                 console.log(this.reservation);
                 try{
-                    await ReservationService.postReservation(this.reservation);
+                    let response = await ReservationService.postReservation(this.reservation);
+                    console.log(response.data)
                     alert('Réservation faite ! Vous allez recevoir un mail confirmant votre réservation.')
                 } catch (error){
                     console.log(error);

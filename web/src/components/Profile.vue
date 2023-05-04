@@ -49,6 +49,9 @@ export default {
           if (!isUser){
             this.$router.push('signup');
           }
+          else {
+            goToProfile();
+          }
         } catch (error){
           console.log(error);
         }
@@ -57,6 +60,7 @@ export default {
       try{
         let response = await UtilisateurService.getUtilisateurByMail(this.auth0.user.email);
         UtilisateurService.setUtlisateurLocal(response.data);
+        console.log('Utilisateur');
         return true;
       } catch (error)
       {

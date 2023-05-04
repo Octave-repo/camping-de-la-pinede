@@ -1,5 +1,5 @@
 <template>
-    <CarouselAvis :elements="tempData" />
+    <CarouselAvis :elements="avis" />
     <h1>{{ camping.nom }}</h1>
     <div>
       <font-awesome-icon icon="star" v-for="index in camping.nombreEtoiles" :key="index"></font-awesome-icon>
@@ -32,7 +32,7 @@
     </div>
     <div v-if="isAuthenticated" class="auth-section">
       <Reservation :camping-id="parseInt(this.id)"/>
-      <Avis/>
+      <Avis :camping-id="parseInt(this.id)"/>
       <StarRate/>
     </div>
     <div v-else>
@@ -85,12 +85,14 @@ export default {
       {id:2, link:"https://i.imgur.com/XlMlvtf.png"},
       {id:3, link:"https://i.imgur.com/pBDveYw.png"},
       {id:4, link:"https://i.imgur.com/SpGSGfz.png"}
-      ]
-    }
+      ],
+      avis:[]
+     }
   },
   beforeMount(){
     this.id = this.$route.params.id;
     this.getCamping(this.id);
+    this.getAvis(this.id)
     if (useAuth0().isAuthenticated){
       this.utilisateur = UtilisateurService.getUtilisateurLocal();
     }
@@ -108,6 +110,15 @@ export default {
       }
       catch (error){
         console.log('Erreur');
+      }
+    },
+    async getAvis(id){
+      try{
+        let response = await CampingService.getAvis(id);
+        this.avis = response.data;
+        console.log(this.avis)
+      } catch (error){
+        console.log(error)
       }
     }
   }

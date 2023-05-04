@@ -9,5 +9,8 @@ class ReservationApi{
     postReservation(reservation){
         return InstanceAxios.post(`${path}/reservation/`, reservation);
     }
+    getReservationUtilisateur(id){
+        return InstanceAxios.get(`${path}/reservation/utilisateur/?id=${id}`)
+    }
 }
 export default new ReservationApi();
