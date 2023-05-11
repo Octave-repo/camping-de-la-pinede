@@ -2,6 +2,7 @@ package fr.camping.services;
 
 import fr.camping.entity.Avis;
 import fr.camping.entity.Camping;
+import fr.camping.entity.GPSLocation;
 import fr.camping.repository.AvisRepository;
 import fr.camping.repository.CampingRepository;
 import fr.camping.services.dto.*;
@@ -58,7 +59,7 @@ public class CampingService {
     public GetCampingResponse getCamping (long id){
         Camping camping = this.campingRepository.findCampingById(id);
         if (camping == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Compte not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Camping non trouvé");
         }
         return GetCampingResponse.builder()
                 .id(camping.getId())
@@ -127,7 +128,7 @@ public class CampingService {
                                                           Double latitude, Double distance, Integer etoiles) {
         List<GetListeCampingResponse> liste = this.campingRepository.findAll()
                 .stream()
-                .map(c-> GetListeCampingResponse.builder()
+                .map(c -> GetListeCampingResponse.builder()
                         .id(c.getId())
                         .nom(c.getNom())
                         .prix(c.getPrix())
@@ -137,5 +138,32 @@ public class CampingService {
                         .adresse(c.getAdresse())
                         .build())
                 .collect(Collectors.toList());
+        if (note != null) {
+            liste = liste.stream().filter(temp -> temp.getNote() >= note).collect(Collectors.toList());
+        }
+        if (prix != null) {
+            liste = liste.stream().filter(temp -> temp.getPrix() >= prix).collect(Collectors.toList());
+        }
+        if (etoiles != null) {
+            liste = liste.stream().filter(temp -> temp.getNombreEtoiles() >= etoiles).collect(Collectors.toList());
+        }
+        if (latitude != null && longitude != null && distance != null){
+            GPSLocation position = new GPSLocation(latitude,longitude);
+            liste = liste.stream().filter(temp -> temp.getAdresse().distanceVers(position) < distance).collect(Collectors.toList());
+        }
+        return liste;
+    }
+    public void postNote(Long id, PostNoteRequest postNoteRequest){
+        Camping camping = this.campingRepository.findCampingById(id);
+        if (camping == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Camping non trouvé");
+        } else {
+            if (camping.getNote() == 0){
+                camping.setNote(postNoteRequest.getNote());
+            } else{
+                camping.setNote((camping.getNote() + postNoteRequest.getNote())/2);
+            }
+            this.campingRepository.save(camping);
+        }
     }
 }

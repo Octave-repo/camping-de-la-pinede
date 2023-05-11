@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 import java.util.List;
 @CrossOrigin(origins = "http://localhost:8080")
@@ -90,9 +91,15 @@ public class CampingController {
     }
 
     @GetMapping
-    private ResponseEntity getListeCaping(){
+    private ResponseEntity getListeCaping(@RequestParam(value="note", required=false) Double note,
+                                          @RequestParam(value="prix", required=false) Double prix,
+                                          @RequestParam(value="longitude",required=false) Double longitude,
+                                          @RequestParam(value="latitude",required=false) Double latitude,
+                                          @RequestParam(value="distance",required=false) Double distance,
+                                          @RequestParam(value="etoiles",required=false) Integer etoiles){
         try{
-            List<GetListeCampingResponse> response = this.campingServiceService.getListeCamping();
+            List<GetListeCampingResponse> response = this.campingServiceService.getListeCamping(note, prix, longitude,
+                    latitude, distance, etoiles);
             if (response!=null)
                 return ResponseEntity.ok().body(response);
             else
@@ -118,6 +125,21 @@ public class CampingController {
                 PostCampingResponse response = this.campingServiceService.updatecamping(putCampingRequest);
                 return ResponseEntity.ok().body(response);
             } catch (Exception e){
+                return ResponseEntity.internalServerError().body("Une erreur interne a été rencontrée");
+            }
+        }
+    }
+    @PostMapping("/{id}/note")
+    //PostNoteRequest
+    private ResponseEntity ajoutNote(@PathVariable Long id, @RequestBody PostNoteRequest postNoteRequest ){
+        if (postNoteRequest.getNote() < 0.0 && postNoteRequest.getNote() > 5.0)
+            return ResponseEntity.badRequest().body(
+                    new HttpErreurFonctionnelle("Les donnnées en entrée du service sont non renseignes ou incorrectes"));
+        else{
+            try{
+                this.campingServiceService.postNote(id, postNoteRequest);
+                return ResponseEntity.ok().build();
+            }catch (Exception e){
                 return ResponseEntity.internalServerError().body("Une erreur interne a été rencontrée");
             }
         }

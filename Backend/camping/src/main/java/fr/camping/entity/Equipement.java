@@ -4,7 +4,7 @@ public enum Equipement {
     TELEVISION,
     MACHINE_A_LAVER,
     PISCINE,
-    RESTAURENT,
+    RESTAURANT,
     BAR,
     BOITE_DE_NUIT,
     MINI_GOLF
