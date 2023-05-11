@@ -123,8 +123,9 @@ public class CampingService {
     }
 
 
-    public List<GetListeCampingResponse> getListeCamping (){
-        return this.campingRepository.findAll()
+    public List<GetListeCampingResponse> getListeCamping (Double note, Double prix, Double longitude,
+                                                          Double latitude, Double distance, Integer etoiles) {
+        List<GetListeCampingResponse> liste = this.campingRepository.findAll()
                 .stream()
                 .map(c-> GetListeCampingResponse.builder()
                         .id(c.getId())
