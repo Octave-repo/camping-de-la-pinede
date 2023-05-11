@@ -1,10 +1,11 @@
 <template>
     <Carousel :items-to-show="3"
+        v-if="elements.length" 
         :autoplay="2000"
         :wrap-around="true" class="carousel">
         <Slide v-for="element in elements" :key="element.id">
             <div>
-                <img :src="element.link" width="240" height="135" class="carousel-content"/>
+                <a :href="element.lien" target="_blank"> <img :src="element.logo" width="240" height="135" class="carousel-content"/> </a>
             </div>
         </Slide>
         <template #addons>
@@ -12,6 +13,7 @@
             <Navigation/>
         </template>
     </Carousel>
+    <p v-else>Aucune activité proche</p>
 </template>
 <script>
 import {Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'

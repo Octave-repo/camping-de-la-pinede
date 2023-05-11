@@ -4,7 +4,8 @@ import CampingSearchView from '../views/CampingSearchView.vue'
 import CampingView from '../views/CampingView.vue'
 import UtilisateurView from '../views/UtilisateurView.vue'
 import CreateCampingView from '../views/CreateCampingView.vue'
-import SignUpView from '../views/SignUpView.vue' 
+import SignUpView from '../views/SignUpView.vue'
+import CreateActiviteView from '../views/CreateActiviteView.vue'
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignUpView
+  },
+  {
+    path: '/newActivite',
+    name: 'newActivite',
+    component: CreateActiviteView
   },
   {
     path: '/about',

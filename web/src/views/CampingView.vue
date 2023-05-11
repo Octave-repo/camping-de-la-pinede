@@ -22,8 +22,8 @@
       </ul>
     </div>
     <div>
-      <h3>Activités proche:</h3>
-      <CarouselActivites :elements="tempDataImg"/>
+      <h3>Activités à moins de 50km:</h3>
+      <CarouselActivites :elements="activiteList"/>
     </div>
     <div>
       <p>Nous contacter: </p>
@@ -50,6 +50,7 @@ import CarouselActivites from '@/components/CarouselActivites.vue'
 import { useAuth0 } from '@auth0/auth0-vue';
 import UtilisateurService from '@/service/UtilisateurService'
 import StarRate from '@/components/StarRate.vue'
+import ActiviteService from '@/service/ActiviteService'
 
 export default {
   name: 'CampingSearchView',
@@ -74,17 +75,12 @@ export default {
       camping: {adresse:{}},
       position: [0,0],
       position2: null,
+      activiteList: [],
       //Donnée temporaire pour tester le fonctionnement des carousels
-      tempData:[{id:1, title:"C'est bien", text:"Lorem Ipsum Amogus"},
-      {id:2, title:"C'était très bien", text:"Lorem Ipsum Amogus"},
-      {id:3, title:"Blablabla", text:"Lorem Ipsum Amogus"},
-      {id:4, title:"fgzjfghejfz", text:"Lorem Ipsum Amogus"},
-      {id:5, title:"hkj", text:"Lorem Ipsum Amogus"}
-      ],
-      tempDataImg:[{id:1, link:"https://i.imgur.com/vm4iVX7.png"},
-      {id:2, link:"https://i.imgur.com/XlMlvtf.png"},
-      {id:3, link:"https://i.imgur.com/pBDveYw.png"},
-      {id:4, link:"https://i.imgur.com/SpGSGfz.png"}
+      tempDataImg:[{id:1, logo:"https://i.imgur.com/vm4iVX7.png", lien:"https://github.com/"},
+      {id:2, logo:"https://i.imgur.com/XlMlvtf.png", lien:"https://github.com/"},
+      {id:3, logo:"https://i.imgur.com/pBDveYw.png", lien:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
+      {id:4, logo:"https://i.imgur.com/SpGSGfz.png", lien:"https://github.com/"}
       ],
       avis:[]
      }
@@ -107,6 +103,7 @@ export default {
         this.camping = response.data;
         this.position = [this.camping.adresse.latitude, this.camping.adresse.longitude];
         console.log(this.position);
+        this.getActivites()
       }
       catch (error){
         console.log('Erreur');
@@ -117,6 +114,15 @@ export default {
         let response = await CampingService.getAvis(id);
         this.avis = response.data;
         console.log(this.avis)
+      } catch (error){
+        console.log(error)
+      }
+    },
+    async getActivites(){
+      console.log(this.camping.adresse.longitude)
+      try{
+        let response = await ActiviteService.getActivites(this.camping.adresse.longitude, this.camping.adresse.latitude,50)
+        this.activiteList = response.data
       } catch (error){
         console.log(error)
       }
