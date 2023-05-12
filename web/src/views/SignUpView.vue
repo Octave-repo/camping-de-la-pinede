@@ -37,8 +37,6 @@ export default{
         }
     },
     beforeMount() {
-        //On interdit la page de signup si l'utilisateur n'est pas connecté
-        //TODO Vérifier que l'utilisateur n'est pas déjà existant
         if (!this.authenticated)
             this.$router.push('/');
         else{
@@ -51,6 +49,10 @@ export default{
     },
     methods:{
         async confirm(){
+            if(Object.keys(this.utilisateur.adresse).length === 0){
+                alert('Veuillez séléctionner une adresse')
+                return
+            }
             try{
                 let response = await UtilisateurService.postUtilisateur(this.utilisateur);
                 //On met l'utilisateur crée en tant qu'utilisateur actuel

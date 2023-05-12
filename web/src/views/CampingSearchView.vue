@@ -33,7 +33,7 @@
             <tr v-for="camping in listCampings" :key="camping.id" class="campingObject" @click="goCamping(camping.id)">
                 <td>{{ camping.nom }}</td>
                 <td>{{ camping.prix }}</td>
-                <td>{{ camping.nombreEtoiles }} </td>
+                <td><font-awesome-icon icon="star" v-for="index in camping.nombreEtoiles" :key="index"></font-awesome-icon> </td>
                 <td>{{ camping.note > 0 ? camping.note : "N/A" }}</td>
                 <td>{{ camping.adresse.nom }}</td>
             </tr>

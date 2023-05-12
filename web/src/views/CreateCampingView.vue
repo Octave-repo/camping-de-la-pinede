@@ -4,11 +4,9 @@
         <label>Nom: </label>
         <input type="text" v-model="camping.nom">
         <label>Prix: </label>
-        <input type="number" v-model="camping.prix">
+        <input type="number" pattern="[0-9]*" v-model="camping.prix">
         <label>Nombre d'emplacements: </label>
         <input type="number" v-model="camping.emplacementLibres">
-        <label>Note: </label>
-        <input type="number" v-model="camping.note">
         <label>Numero de Téléphone: </label>
         <input type="tel" v-model="camping.numeroTelephone">
         <label>Adresse mail</label>
@@ -61,23 +59,45 @@ export default{
     },
     data(){
         return {
-            camping: {},
+            camping: {
+                prix:1,
+                emplacementLibres: 1,
+                nombreEtoiles: 0,
+                adresse: {}
+            },
             checkedLogements:[],
             checkedEquipement:[],
         }
     },
-    beforeMount(){
-        this.camping.adresse = {};
-    },
     methods: {
         async confirmer(){
+            this.camping.note = 0;
             this.camping.typeLogements = this.checkedLogements;
             this.camping.equipement = this.checkedEquipement;
             console.log(this.camping);
+            if (this.camping.nom === "" || this.camping.prix === ""
+                || this.camping.emplacementLibres === ""
+                || this.camping.numeroTelephone === ""
+                || this.camping.adresseMail === ""
+                || this.camping.nombreEtoiles === ""){
+                alert('Les données en entrée sont incorrecte')
+                return;
+            }
+            if (this.camping.emplacementLibres <= 0 || this.camping.prix <= 0)
+            {
+                alert('Le prix et le nombre d\'emplacements doivent être positif');
+                return
+            }
+            if (this.camping.nombreEtoiles < 0 || this.camping.nombreEtoiles > 5){
+                alert('Le nombre d\'étoiles doit être entre 0 et 5')
+                return
+            }
+            if(Object.keys(this.camping.adresse).length === 0){
+                alert('Veuillez séléctionner une adresse')
+                return
+            }
             try{
-                /*this.camping.adresse.nom = "Valenciennes";
-                this.camping.adresse.latitude = 50.3333;
-                this.camping.adresse.longitude = 4.4555;*/
+                
                 let response = await CampingService.postCamping(this.camping);
                 console.log(response.data);
                 this.$router.push('campings');
