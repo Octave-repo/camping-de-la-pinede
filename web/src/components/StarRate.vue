@@ -4,17 +4,23 @@
         <font-awesome-icon :icon="starIcon(star)" />
       </span>
     </div>
-    <button>Noter !</button>
+    <button @click="confirmer">Noter !</button>
   </template>
   
   <script>
   import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
   import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-  
+  import CampingService from '@/service/CampingService'
   export default {
     components: {
       FontAwesomeIcon,
+    },
+    props:{
+        campingId:{
+            type: Number,
+            required: true
+        }
     },
     data() {
       return {
@@ -33,6 +39,17 @@
           return regularStar;
         }
       },
+      async confirmer(){
+        let content = {
+          note: this.rating
+        }
+        try{
+          await CampingService.postNote(this.campingId, content)
+          alert("Merci pour votre retour !")
+        } catch (error){
+          console.log(error)
+        }
+      }
     },
   };
   </script>

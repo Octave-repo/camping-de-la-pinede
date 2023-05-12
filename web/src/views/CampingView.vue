@@ -33,7 +33,7 @@
     <div v-if="isAuthenticated" class="auth-section">
       <Reservation :camping-id="parseInt(this.id)"/>
       <Avis :camping-id="parseInt(this.id)"/>
-      <StarRate/>
+      <StarRate :camping-id="parseInt(this.id)"/>
     </div>
     <div v-else>
       <h2>Vous devez être connecter pour réserver ou poster un commentaire.</h2>

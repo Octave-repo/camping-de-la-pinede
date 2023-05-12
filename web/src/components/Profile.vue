@@ -50,7 +50,7 @@ export default {
             this.$router.push('signup');
           }
           else {
-            goToProfile();
+            this.goToProfile();
           }
         } catch (error){
           console.log(error);

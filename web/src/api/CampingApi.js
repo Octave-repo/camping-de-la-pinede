@@ -25,6 +25,9 @@ class CampingApi{
     getAvis(id){
         return InstanceAxios.get(`${path}/camping/avis?id=${id}`)
     }
+    postNote(id, content){
+        return InstanceAxios.post(`${path}/camping/${id}/note`, content)
+    }
 }
 
 export default new CampingApi();

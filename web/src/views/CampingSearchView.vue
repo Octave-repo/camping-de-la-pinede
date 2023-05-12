@@ -34,7 +34,7 @@
                 <td>{{ camping.nom }}</td>
                 <td>{{ camping.prix }}</td>
                 <td>{{ camping.nombreEtoiles }} </td>
-                <td>{{ camping.note }}</td>
+                <td>{{ camping.note > 0 ? camping.note : "N/A" }}</td>
                 <td>{{ camping.adresse.nom }}</td>
             </tr>
         </table>

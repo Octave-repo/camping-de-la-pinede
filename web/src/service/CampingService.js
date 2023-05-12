@@ -17,6 +17,9 @@ class CampingService{
     getAvis(id){
         return CampingApi.getAvis(id);
     }
+    postNote(id, content){
+        return CampingApi.postNote(id, content);
+    }
 }
 
 export default new CampingService();

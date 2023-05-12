@@ -30,7 +30,6 @@
     <Map :pos1="[50.349998, 3.53333]" :pos2="[50.633333, 3.066667]" :zoom=9></Map>
     <CarouselAvis :elements="tempData" />
     <CarouselActivites :elements="tempDataImg"/>
-    <StarRate/>
   </div>
 </template>
 
