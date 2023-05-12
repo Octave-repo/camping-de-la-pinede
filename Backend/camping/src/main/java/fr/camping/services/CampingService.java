@@ -142,7 +142,7 @@ public class CampingService {
             liste = liste.stream().filter(temp -> temp.getNote() >= note).collect(Collectors.toList());
         }
         if (prix != null) {
-            liste = liste.stream().filter(temp -> temp.getPrix() >= prix).collect(Collectors.toList());
+            liste = liste.stream().filter(temp -> temp.getPrix() <= prix).collect(Collectors.toList());
         }
         if (etoiles != null) {
             liste = liste.stream().filter(temp -> temp.getNombreEtoiles() >= etoiles).collect(Collectors.toList());

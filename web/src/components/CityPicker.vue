@@ -2,13 +2,12 @@
     <label>Adresse</label>
     <input type="text" v-model="adresse" @change="fetchCities">
     <label>Code Postal</label>
-    <input type="text" v-model="postalCode" @change="fetchCities">
+    <input type="text" style="width: 50px;" v-model="postalCode" @change="fetchCities">
     <label>Choisir une adresse: </label>
     <select v-model="index" @change="confirmCity">
         <option v-for="(cit, i) in cities" :key="i" :value="i" @change="confirmCity">{{ cit.properties.label }}</option>
     </select>
-    <button @click="confirmCity">Ok</button>
-    <Map :pos1="position"></Map>
+    <Map v-if="displayMap" :pos1="position"></Map>
 </template>
 <script>
 import VilleService from '@/service/VilleService'
@@ -20,6 +19,13 @@ export default{
         "longitude",
         "latitude"
     ],
+    props:{
+        displayMap:{
+            type: Boolean,
+            required: false,
+            default: true
+        }
+    },
     components:{
         Map
     },

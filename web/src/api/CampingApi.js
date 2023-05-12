@@ -13,6 +13,16 @@ class CampingApi{
     getCampings(){
         return InstanceAxios.get(`${path}/camping/`);
     }
+    filteredGetCampings(note, prix, longitude, latitude, distance, etoiles){
+        return InstanceAxios.get(`${path}/camping/`, {params:{
+            note:note,
+            prix:prix,
+            etoiles:etoiles,
+            latitude:latitude,
+            longitude:longitude,
+            distance:distance}
+        })
+    }
     getCamping(id){
         return InstanceAxios.get(`${path}/camping/${id}`);
     }

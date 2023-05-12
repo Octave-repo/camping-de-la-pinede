@@ -5,6 +5,9 @@ class CampingService{
     getCampings(){
         return CampingApi.getCampings();
     }
+    filteredGetCampings(note, prix, longitude, latitude, distance, etoiles){
+        return CampingApi.filteredGetCampings(note, prix, longitude, latitude, distance, etoiles)
+    }
     getCamping(id){
         return CampingApi.getCamping(id);
     }

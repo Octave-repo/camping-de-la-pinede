@@ -4,19 +4,30 @@
         <table>
             <tr>
                 <th>Ville</th>
-                <th>Equipement</th>
-                <th>Type de logement</th>
-                <th>Prix Max</th>
-                <th>Note</th>
-                <th>Nombre d'étoiles</th>
+                <th>Distance (max)</th>
+                <th>Prix (max)</th>
+                <th>Note (min)</th>
+                <th>Nombre d'étoiles (min)</th>
+                <th>Chercher</th>
             </tr>
             <tr>
-                <th><input type="text"></th>
-                <th><select></select></th>
-                <th><select></select></th>
-                <th><input type="number" style="width: 25%;"></th>
-                <th><input type="number" style="width: 25%;"></th>
-                <th><input type="number" style="width: 25%;"></th>
+                <th><CityPicker :display-map="false"
+                    @latitude="(n)=>this.latitude=n"
+                    @longitude="(n)=>this.longitude=n"/></th>
+                <th><input type="number" style="width: 25%;" v-model="distance"></th>
+                <th><input type="number" style="width: 25%;" v-model="prix"></th>
+                <th><input type="number" style="width: 25%;" v-model="note"></th>
+                <th>
+                    <select v-model="etoiles">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </th>
+                <th><button @click="confirmer">Chercher</button></th>
             </tr>
         </table>
     </div>
@@ -42,17 +53,22 @@
 </template>
 <script>
 // @ is an alias to /src
-import Map from '@/components/Map.vue';
+import CityPicker from '@/components/CityPicker.vue'
 import CampingService from '@/service/CampingService'
 export default {
   name: 'CampingSearchView',
   components: {
-    Map
+    CityPicker
   },
   data(){
     return {
-        listCampings: []
-
+        listCampings: [],
+        distance: null,
+        etoiles: "0",
+        prix: null,
+        note: null,
+        latitude: null,
+        longitude: null
     }
   },
   beforeMount(){
@@ -70,6 +86,19 @@ export default {
     },
     goCamping(id){
         this.$router.push({name: 'campingView', params: {id}});
+    },
+    async confirmer(){
+        this.etoiles = parseInt(this.etoiles)
+        this.distance = isNaN(parseFloat(this.distance)) ? null : parseFloat(this.distance)
+        this.prix = isNaN(parseFloat(this.prix)) ? null : parseFloat(this.prix)
+        this.note = isNaN(parseFloat(this.note)) ? null : parseFloat(this.note)
+        try{
+            let response = await CampingService.filteredGetCampings(this.note, this.prix, this.longitude,
+                this.latitude, this.distance, this.etoiles)
+            this.listCampings = response.data
+        } catch (error){
+            console.log(error)
+        }
     }
   }
 }

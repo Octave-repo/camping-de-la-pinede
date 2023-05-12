@@ -5,7 +5,9 @@
     <br/>
     <nav>
       <router-link to="/">Accueil</router-link> |
-      <router-link to="/campings">Nos Campings</router-link>
+      <router-link to="/campings">Nos Campings</router-link> | 
+      <router-link to="/newCamping">Créer Camping</router-link> |
+      <router-link to="/newActivite">Créer Activités</router-link>
     </nav>
   </div>
 <router-view/>
